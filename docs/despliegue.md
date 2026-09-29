@@ -25,7 +25,7 @@ cp .env.example .env
 nano .env
 ```
 
-Completar `NEXTAUTH_URL` (con https y el dominio real), `APP_PORT` si el 3000 ya está ocupado por otra app, `NEXTAUTH_SECRET` y `POSTGRES_PASSWORD`. Para generar los secretos:
+Completar `NEXTAUTH_URL` (con https y el dominio real), `APP_PORT` (4060 por defecto, dentro del rango 4060 a 4069) si ya está ocupado, `NEXTAUTH_SECRET` y `POSTGRES_PASSWORD`. Para generar los secretos:
 
 ```bash
 openssl rand -base64 32
@@ -43,10 +43,10 @@ La clave de Postgres debe tener solo letras y números (va dentro de una URL de 
 docker compose up -d --build
 ```
 
-El servicio `migrate` aplica las migraciones y carga la biblioteca base (46 ejercicios de la planilla y 1.324 del catálogo) y termina. Después arranca la app en `127.0.0.1:APP_PORT`. Para comprobar que responde (cambiar 3000 si se usó otro puerto):
+El servicio `migrate` aplica las migraciones y carga la biblioteca base (46 ejercicios de la planilla y 1.324 del catálogo) y termina. Después arranca la app en `127.0.0.1:APP_PORT`. Para comprobar que responde (cambiar 4060 si se usó otro puerto):
 
 ```bash
-curl -I http://127.0.0.1:3000/login
+curl -I http://127.0.0.1:4060/login
 ```
 
 5. Configurar nginx. Copiar el sitio incluido en el repositorio y editar `server_name` con el dominio real (y el puerto de `proxy_pass` si se cambió `APP_PORT`):

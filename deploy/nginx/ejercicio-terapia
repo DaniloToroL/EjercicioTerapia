@@ -1,6 +1,6 @@
 # /etc/nginx/sites-available/ejercicio-terapia
 # Reemplazar entrenamiento.tudominio.cl por el dominio real (el mismo de NEXTAUTH_URL)
-# y 3000 por APP_PORT si se cambió en .env.
+# y 4060 por APP_PORT si se cambió en .env.
 # HTTPS: después de activar el sitio, correr certbot --nginx -d entrenamiento.tudominio.cl
 
 server {
@@ -12,7 +12,7 @@ server {
     client_max_body_size 350M;
 
     location / {
-        proxy_pass http://127.0.0.1:3000;
+        proxy_pass http://127.0.0.1:4060;
         proxy_http_version 1.1;
 
         proxy_set_header Host $host;

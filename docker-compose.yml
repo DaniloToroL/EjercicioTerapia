@@ -47,7 +47,7 @@ services:
       - uploads:/app/uploads
     # Solo en localhost: nginx del servidor hace de proxy con HTTPS (ver deploy/nginx).
     ports:
-      - "127.0.0.1:${APP_PORT:-3000}:3000"
+      - "127.0.0.1:${APP_PORT:-4060}:3000"
     depends_on:
       db:
         condition: service_healthy
