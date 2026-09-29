@@ -1,0 +1,11 @@
+# HTTPS automático con Let's Encrypt para el dominio de APP_DOMAIN.
+{$APP_DOMAIN} {
+	encode zstd gzip
+
+	# Videos de ejercicios subidos desde la biblioteca.
+	request_body {
+		max_size 350MB
+	}
+
+	reverse_proxy app:3000
+}

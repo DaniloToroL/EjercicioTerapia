@@ -1,0 +1,17 @@
+# Solo para desarrollo local: PostgreSQL expuesto en localhost:5432.
+# docker compose -f docker-compose.dev.yml up -d
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: entrenamiento
+      POSTGRES_PASSWORD: entrenamiento
+      POSTGRES_DB: entrenamiento
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata-dev:/var/lib/postgresql/data
+
+volumes:
+  pgdata-dev:

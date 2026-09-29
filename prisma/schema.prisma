@@ -1,0 +1,315 @@
+// Esquema de datos de la plataforma de entrenamiento.
+// Jerarquía: Program > Mesocycle > Microcycle > TrainingSession > SessionBlock > Prescription.
+// Lo prescrito (Prescription) y lo realizado (SetLog) viven en tablas separadas.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  OWNER
+  COACH
+  ATHLETE
+}
+
+enum LoadType {
+  EXTERNAL // carga externa en kg
+  BODYWEIGHT // peso corporal, lastre opcional
+  BAND // banda elástica
+  TIME // segundos
+  DISTANCE // metros
+  CONTACTS // pliometría
+}
+
+enum MovementPattern {
+  SQUAT
+  HINGE
+  LUNGE
+  HORIZONTAL_PUSH
+  VERTICAL_PUSH
+  HORIZONTAL_PULL
+  VERTICAL_PULL
+  CORE
+  CARRY
+  LOCOMOTION
+  PLYOMETRIC
+  MOBILITY
+  ISOLATION
+  CONDITIONING
+  OTHER
+}
+
+enum MesocycleGoal {
+  INTRODUCTORY
+  HYPERTROPHY
+  STRENGTH
+  POWER
+  DELOAD
+  REHAB
+  CUSTOM
+}
+
+enum VideoProvider {
+  NONE
+  YOUTUBE
+  UPLOAD
+  EXTERNAL
+}
+
+model Organization {
+  id                String   @id @default(cuid())
+  name              String
+  // Umbrales del check-in de regeneración: [{ max, label, message, level }]
+  wellnessThresholds Json?
+  createdAt         DateTime @default(now())
+
+  users      User[]
+  exercises  Exercise[]
+  blockTypes BlockType[]
+  programs   Program[]
+}
+
+model User {
+  id             String    @id @default(cuid())
+  orgId          String
+  role           Role
+  name           String
+  email          String    @unique
+  passwordHash   String?
+  bodyWeightKg   Float?
+  birthDate      DateTime? @db.Date
+  notes          String?
+  active         Boolean   @default(true)
+  inviteToken    String?   @unique
+  inviteExpires  DateTime?
+  consentAt      DateTime?
+  coachId        String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  org       Organization      @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  coach     User?             @relation("CoachAthletes", fields: [coachId], references: [id], onDelete: SetNull)
+  athletes  User[]            @relation("CoachAthletes")
+  coachedPrograms Program[]   @relation("ProgramCoach")
+  programs  Program[]         @relation("ProgramAthlete")
+  workouts  WorkoutLog[]
+  checkins  WellnessCheckin[]
+
+  @@index([orgId, role])
+}
+
+model Exercise {
+  id               String          @id @default(cuid())
+  orgId            String?
+  source           String          @default("custom") // custom | planilla | exercises-dataset
+  sourceId         String?
+  priority         Int             @default(2) // orden en la biblioteca: propios 2, planilla 1, catálogo base 0
+  name             String
+  nameEn           String?
+  videoProvider    VideoProvider   @default(NONE)
+  videoUrl         String?
+  thumbnailUrl     String?
+  pattern          MovementPattern @default(OTHER)
+  loadType         LoadType        @default(EXTERNAL)
+  equipment        String[]
+  bodyPart         String?
+  targetMuscle     String?
+  secondaryMuscles String[]
+  instructions     String?
+  defaultBlockKey  String?
+  unilateral       Boolean         @default(false)
+  archived         Boolean         @default(false)
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  org           Organization?  @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  prescriptions Prescription[]
+
+  @@unique([source, sourceId])
+  @@index([orgId, archived])
+  @@index([priority, name])
+}
+
+model BlockType {
+  id       String  @id @default(cuid())
+  orgId    String
+  key      String
+  name     String
+  order    Int
+  archived Boolean @default(false)
+
+  org    Organization   @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  blocks SessionBlock[]
+
+  @@unique([orgId, key])
+}
+
+model Program {
+  id          String    @id @default(cuid())
+  orgId       String
+  coachId     String
+  athleteId   String?
+  isTemplate  Boolean   @default(false)
+  name        String
+  description String?
+  startDate   DateTime? @db.Date // lunes de la primera semana
+  active      Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  org        Organization @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  coach      User         @relation("ProgramCoach", fields: [coachId], references: [id], onDelete: Cascade)
+  athlete    User?        @relation("ProgramAthlete", fields: [athleteId], references: [id], onDelete: Cascade)
+  mesocycles Mesocycle[]
+
+  @@index([orgId, isTemplate])
+  @@index([athleteId, active])
+}
+
+model Mesocycle {
+  id        String        @id @default(cuid())
+  programId String
+  order     Int
+  name      String
+  goal      MesocycleGoal @default(CUSTOM)
+  notes     String?
+
+  program     Program      @relation(fields: [programId], references: [id], onDelete: Cascade)
+  microcycles Microcycle[]
+
+  @@index([programId, order])
+}
+
+model Microcycle {
+  id          String  @id @default(cuid())
+  mesocycleId String
+  order       Int
+  name        String
+  objective   String?
+
+  mesocycle Mesocycle         @relation(fields: [mesocycleId], references: [id], onDelete: Cascade)
+  sessions  TrainingSession[]
+
+  @@index([mesocycleId, order])
+}
+
+model TrainingSession {
+  id           String  @id @default(cuid())
+  microcycleId String
+  order        Int
+  weekday      Int // 0 = lunes ... 6 = domingo
+  name         String
+  color        String  @default("blue")
+  notes        String?
+
+  microcycle Microcycle        @relation(fields: [microcycleId], references: [id], onDelete: Cascade)
+  blocks     SessionBlock[]
+  logs       WorkoutLog[]
+  checkins   WellnessCheckin[]
+
+  @@index([microcycleId, order])
+}
+
+model SessionBlock {
+  id          String  @id @default(cuid())
+  sessionId   String
+  blockTypeId String?
+  title       String
+  order       Int
+
+  session   TrainingSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  blockType BlockType?      @relation(fields: [blockTypeId], references: [id], onDelete: SetNull)
+  items     Prescription[]
+
+  @@index([sessionId, order])
+}
+
+model Prescription {
+  id          String  @id @default(cuid())
+  blockId     String
+  exerciseId  String
+  order       Int
+  group       String? // superserie: A, B, C...
+  sets        Int     @default(3)
+  repsText    String? // lo que escribe el entrenador: "8 a 10", "30\" x mano"
+  repsMin     Int?
+  repsMax     Int?
+  loadKg      Float?
+  loadPct     Float? // % del 1RM estimado
+  rpeTarget   Float?
+  tempo       String?
+  restSec     Int?
+  notes       String?
+
+  block    SessionBlock @relation(fields: [blockId], references: [id], onDelete: Cascade)
+  exercise Exercise     @relation(fields: [exerciseId], references: [id], onDelete: Restrict)
+  setLogs  SetLog[]
+
+  @@index([blockId, order])
+  @@index([exerciseId])
+}
+
+model WorkoutLog {
+  id          String    @id @default(cuid())
+  sessionId   String
+  athleteId   String
+  date        DateTime  @db.Date
+  startedAt   DateTime  @default(now())
+  completedAt DateTime?
+  sessionRpe  Float?
+  durationMin Int?
+  comment     String?
+
+  session TrainingSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  athlete User            @relation(fields: [athleteId], references: [id], onDelete: Cascade)
+  sets    SetLog[]
+
+  @@unique([sessionId, athleteId])
+  @@index([athleteId, date])
+}
+
+model SetLog {
+  id             String   @id @default(cuid())
+  workoutLogId   String
+  prescriptionId String
+  setNumber      Int
+  reps           Int?
+  loadKg         Float?
+  seconds        Int?
+  rpe            Float?
+  done           Boolean  @default(true)
+  updatedAt      DateTime @updatedAt
+
+  workout      WorkoutLog   @relation(fields: [workoutLogId], references: [id], onDelete: Cascade)
+  prescription Prescription @relation(fields: [prescriptionId], references: [id], onDelete: Cascade)
+
+  @@unique([workoutLogId, prescriptionId, setNumber])
+  @@index([prescriptionId])
+}
+
+model WellnessCheckin {
+  id           String   @id @default(cuid())
+  athleteId    String
+  sessionId    String?
+  date         DateTime @db.Date
+  sleepTime    Int
+  sleepQuality Int
+  rest         Int
+  pain         Int
+  stress       Int
+  nutrition    Int
+  total        Int
+  comment      String?
+  createdAt    DateTime @default(now())
+
+  athlete User             @relation(fields: [athleteId], references: [id], onDelete: Cascade)
+  session TrainingSession? @relation(fields: [sessionId], references: [id], onDelete: SetNull)
+
+  @@unique([athleteId, sessionId])
+  @@index([athleteId, date])
+}

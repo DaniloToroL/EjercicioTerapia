@@ -1,0 +1,13 @@
+node_modules
+.next
+.git
+.env
+.env.*
+!.env.example
+uploads
+backups
+src/generated
+docs
+*.md
+!prisma/**/*.md
+.claude
