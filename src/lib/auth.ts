@@ -1,5 +1,6 @@
 import "server-only";
 import bcrypt from "bcryptjs";
+import { createHash } from "crypto";
 import type { NextAuthOptions } from "next-auth";
 import { getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -28,6 +29,11 @@ function registerFailure(email: string) {
   else entry.count++;
 }
 
+/** Huella del token del link: va en la sesión para detectar si el link se revocó, sin exponer el token. */
+export function linkKey(token: string) {
+  return createHash("sha256").update(token).digest("hex").slice(0, 24);
+}
+
 export const authOptions: NextAuthOptions = {
   session: { strategy: "jwt", maxAge: 60 * 60 * 24 * 30 },
   pages: { signIn: "/login" },
@@ -50,7 +56,20 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
         failedAttempts.delete(email);
-        return { id: user.id, name: user.name, email: user.email, role: user.role, orgId: user.orgId };
+        return { id: user.id, name: user.name, email: user.email ?? "", role: user.role, orgId: user.orgId };
+      },
+    }),
+    // Acceso directo con el link personal del atleta, solo si el entrenador lo dejó abierto.
+    CredentialsProvider({
+      id: "access-link",
+      name: "Link de acceso",
+      credentials: { token: { label: "Token", type: "text" } },
+      async authorize(credentials) {
+        const token = credentials?.token;
+        if (!token || token.length < 20) return null;
+        const user = await prisma.user.findUnique({ where: { accessToken: token } });
+        if (!user || !user.active || user.role !== "ATHLETE" || user.accessMode !== "OPEN") return null;
+        return { id: user.id, name: user.name, email: user.email ?? "", role: user.role, orgId: user.orgId, linkKey: linkKey(token) };
       },
     }),
   ],
@@ -60,6 +79,7 @@ export const authOptions: NextAuthOptions = {
         token.id = user.id;
         token.role = user.role;
         token.orgId = user.orgId;
+        token.linkKey = user.linkKey;
       }
       return token;
     },
@@ -67,12 +87,13 @@ export const authOptions: NextAuthOptions = {
       session.user.id = token.id;
       session.user.role = token.role;
       session.user.orgId = token.orgId;
+      session.user.linkKey = token.linkKey;
       return session;
     },
   },
 };
 
-export type SessionUser = { id: string; name: string; email: string; role: Role; orgId: string };
+export type SessionUser = { id: string; name: string; email: string | null; role: Role; orgId: string };
 
 export async function getCurrentUser(): Promise<SessionUser | null> {
   const session = await getServerSession(authOptions);
@@ -80,9 +101,13 @@ export async function getCurrentUser(): Promise<SessionUser | null> {
   // Se valida contra la base para reflejar desactivaciones o cambios de rol.
   const user = await prisma.user.findUnique({
     where: { id: session.user.id },
-    select: { id: true, name: true, email: true, role: true, orgId: true, active: true },
+    select: { id: true, name: true, email: true, role: true, orgId: true, active: true, accessMode: true, accessToken: true },
   });
   if (!user || !user.active) return null;
+  // Sesión abierta con link: deja de valer si el entrenador cambió el modo o generó un link nuevo.
+  if (session.user.linkKey) {
+    if (user.accessMode !== "OPEN" || !user.accessToken || linkKey(user.accessToken) !== session.user.linkKey) return null;
+  }
   return { id: user.id, name: user.name, email: user.email, role: user.role, orgId: user.orgId };
 }
 

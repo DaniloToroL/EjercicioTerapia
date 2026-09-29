@@ -17,6 +17,12 @@ enum Role {
   ATHLETE
 }
 
+// Cómo entra el atleta con su link personal.
+enum AccessMode {
+  LOGIN // el link lleva a activar la cuenta o a iniciar sesión con contraseña
+  OPEN // el link da acceso directo, sin contraseña
+}
+
 enum LoadType {
   EXTERNAL // carga externa en kg
   BODYWEIGHT // peso corporal, lastre opcional
@@ -79,8 +85,10 @@ model User {
   orgId          String
   role           Role
   name           String
-  email          String    @unique
+  email          String?   @unique // opcional para atletas con link abierto
   passwordHash   String?
+  accessToken    String?   @unique // link permanente del atleta: /r/<token>
+  accessMode     AccessMode @default(LOGIN)
   bodyWeightKg   Float?
   birthDate      DateTime? @db.Date
   notes          String?

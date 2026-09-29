@@ -4,6 +4,7 @@
 //   entrenador@demo.test y atleta@demo.test, contraseña SEED_DEMO_PASSWORD o "demo-entreno-2026".
 
 import bcrypt from "bcryptjs";
+import { randomBytes } from "crypto";
 import type { PrismaClient } from "../../src/generated/prisma/client";
 import { DEFAULT_BLOCK_TYPES, DEFAULT_WELLNESS_THRESHOLDS } from "../../src/lib/constants";
 import { addDaysISO, fromISODate, mondayOf, todayISO } from "../../src/lib/dates";
@@ -238,6 +239,7 @@ export async function seedDemo(prisma: PrismaClient) {
       consentAt: new Date(),
       coachId: coach.id,
       bodyWeightKg: 82,
+      accessToken: randomBytes(24).toString("base64url"),
     },
   });
 

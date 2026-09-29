@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageHeader } from "@/components/app-nav";
+import { AccessLinkCard } from "@/components/coach/access-link-card";
 import { AssignProgramDialog, NewProgramDialog } from "@/components/coach/program-dialogs";
 import { ProgressCharts } from "@/components/progress-charts";
 import { Badge } from "@/components/ui/badge";
@@ -26,7 +27,19 @@ export default async function AthletePage({ params }: PageProps<"/coach/atletas/
   const { id } = await params;
   const athlete = await prisma.user.findFirst({
     where: { id, orgId: coach.orgId },
-    select: { id: true, name: true, email: true, role: true, active: true, bodyWeightKg: true, notes: true, passwordHash: true, consentAt: true },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      active: true,
+      bodyWeightKg: true,
+      notes: true,
+      passwordHash: true,
+      consentAt: true,
+      accessMode: true,
+      accessToken: true,
+    },
   });
   if (!athlete) notFound();
 
@@ -67,15 +80,26 @@ export default async function AthletePage({ params }: PageProps<"/coach/atletas/
         title={athlete.name}
         description={
           <>
-            {athlete.email}
+            {athlete.email ?? "Sin email"}
             {athlete.bodyWeightKg ? `, ${formatNumber(athlete.bodyWeightKg, 1)} kg` : ""}
-            {!athlete.passwordHash && ", invitación pendiente"}
+            {athlete.role === "ATHLETE" && (athlete.accessMode === "OPEN" ? ", link abierto" : !athlete.passwordHash && ", aún no crea su contraseña")}
             {!athlete.active && ", acceso desactivado"}
           </>
         }
         actions={<AthleteActions athlete={athlete} isSelf={isSelf} />}
       />
       {athlete.notes && <p className="rounded-md border bg-muted/40 p-3 text-sm whitespace-pre-line">{athlete.notes}</p>}
+      {athlete.role === "ATHLETE" && (
+        <div className="max-w-xl">
+          <AccessLinkCard
+            athleteId={athlete.id}
+            name={athlete.name}
+            accessPath={athlete.accessToken ? `/r/${athlete.accessToken}` : null}
+            mode={athlete.accessMode}
+            hasEmail={!!athlete.email}
+          />
+        </div>
+      )}
 
       <Tabs defaultValue="progress">
         <TabsList>

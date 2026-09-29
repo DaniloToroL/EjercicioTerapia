@@ -241,6 +241,8 @@ Atleta:
 
 Construido y probado en local: todo el alcance de la Fase 1 y buena parte de la Fase 2 (mesociclos con tipo, plantillas y asignación, progresión automática al duplicar semanas, carga por % de 1RM, tablero con alertas, registro sin señal, subida de videos propios). Los 46 ejercicios de la planilla quedan cargados sin link de video; los links se agregan desde la biblioteca o con el importador de la planilla, que queda pendiente hasta tener el .xlsx. Pendiente de la Fase 2: vista calendario mensual del mesociclo para el entrenador y notificaciones push.
 
+Agregado el 29 de septiembre de 2026: link personal por atleta para copiar y pegar, con modo elegible por el entrenador (con login o abierto). En modo abierto el atleta no necesita email ni contraseña; generar un link nuevo revoca el anterior y sus sesiones.
+
 ### Fase 1: MVP de uso propio (5 a 7 semanas)
 
 Meta: dejar de usar la planilla.

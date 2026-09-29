@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHeader } from "@/components/app-nav";
 import { AthleteFormDialog } from "@/components/coach/athlete-form-dialog";
+import { CopyLinkButton } from "@/components/coach/invite-link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -73,12 +74,26 @@ export default async function CoachHome() {
               {athletes.map((a) => (
                 <TableRow key={a.id} className={cn(!a.active && "opacity-50")}>
                   <TableCell>
-                    <Link href={`/coach/atletas/${a.id}`} className="font-medium hover:underline">
-                      {a.name}
-                      {a.isSelf && <span className="text-muted-foreground"> (yo)</span>}
-                    </Link>
+                    <div className="flex items-center gap-1">
+                      <Link href={`/coach/atletas/${a.id}`} className="font-medium hover:underline">
+                        {a.name}
+                        {a.isSelf && <span className="text-muted-foreground"> (yo)</span>}
+                      </Link>
+                      {a.accessPath && a.active && <CopyLinkButton path={a.accessPath} />}
+                      {a.accessMode === "OPEN" && !a.isSelf && (
+                        <Badge variant="outline" className="text-[10px]">
+                          Abierto
+                        </Badge>
+                      )}
+                    </div>
                     <div className="text-xs text-muted-foreground">
-                      {!a.active ? "Inactivo" : a.pendingInvite ? "Invitación pendiente" : a.lastWorkoutDate ? `Última sesión ${formatDateShort(a.lastWorkoutDate)}` : "Sin sesiones"}
+                      {!a.active
+                        ? "Inactivo"
+                        : a.pendingInvite
+                          ? "Aún no crea su contraseña"
+                          : a.lastWorkoutDate
+                            ? `Última sesión ${formatDateShort(a.lastWorkoutDate)}`
+                            : "Sin sesiones"}
                     </div>
                   </TableCell>
                   <TableCell>

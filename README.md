@@ -2,6 +2,8 @@
 
 Plataforma para planificar entrenamiento por mesociclos y microciclos y hacer seguimiento desde el teléfono. Reemplaza la planilla de microciclos: el entrenador arma las semanas arrastrando ejercicios desde una biblioteca y el atleta ve su sesión, el video de cada ejercicio, registra series con kg y RPE, hace el check-in de regeneración y ve su progreso.
 
+Cada atleta tiene un link personal (`/r/<token>`) para copiar y pegar. El entrenador decide en la ficha del atleta si el link es con login (crea su contraseña la primera vez y después ingresa con ella) o abierto (entra directo, sin contraseña ni email). Generar un link nuevo invalida el anterior y cierra las sesiones abiertas con él.
+
 Plan de producto y decisiones: [docs/plan-producto.md](docs/plan-producto.md). Despliegue en el VPS: [docs/despliegue.md](docs/despliegue.md).
 
 ## Stack

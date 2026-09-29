@@ -5,20 +5,24 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 import { createAthlete, updateAthlete } from "@/actions/athletes";
+import { ACCESS_MODE_INFO, AccessModePicker } from "@/components/coach/access-link-card";
 import { InviteLink } from "@/components/coach/invite-link";
+import type { AccessMode } from "@/generated/prisma/enums";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
-type Athlete = { id: string; name: string; email: string; bodyWeightKg: number | null; notes: string | null };
+type Athlete = { id: string; name: string; email: string | null; accessMode: AccessMode; bodyWeightKg: number | null; notes: string | null };
 
 export function AthleteFormDialog({ athlete, trigger }: { athlete?: Athlete; trigger?: React.ReactNode }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [pending, setPending] = useState(false);
-  const [invite, setInvite] = useState<{ path: string; name: string; id: string } | null>(null);
+  const [mode, setMode] = useState<AccessMode>(athlete?.accessMode ?? "LOGIN");
+  const [created, setCreated] = useState<{ path: string; name: string; id: string; mode: AccessMode } | null>(null);
+  const emailRequired = mode === "LOGIN";
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -31,7 +35,7 @@ export function AthleteFormDialog({ athlete, trigger }: { athlete?: Athlete; tri
       notes: String(f.get("notes") ?? "") || null,
     };
     setPending(true);
-    const res = athlete ? await updateAthlete(athlete.id, input) : await createAthlete(input);
+    const res = athlete ? await updateAthlete(athlete.id, input) : await createAthlete({ ...input, accessMode: mode });
     setPending(false);
     if (!res.ok) {
       toast.error(res.error);
@@ -41,8 +45,8 @@ export function AthleteFormDialog({ athlete, trigger }: { athlete?: Athlete; tri
       toast.success("Datos actualizados");
       setOpen(false);
       router.refresh();
-    } else if (res.data && "invitePath" in res.data) {
-      setInvite({ path: res.data.invitePath, name: input.name, id: res.data.id });
+    } else if (res.data && "accessPath" in res.data) {
+      setCreated({ path: res.data.accessPath, name: input.name, id: res.data.id, mode });
     }
   }
 
@@ -51,9 +55,9 @@ export function AthleteFormDialog({ athlete, trigger }: { athlete?: Athlete; tri
       open={open}
       onOpenChange={(v) => {
         setOpen(v);
-        if (!v && invite) {
-          router.push(`/coach/atletas/${invite.id}`);
-          setInvite(null);
+        if (!v && created) {
+          router.push(`/coach/atletas/${created.id}`);
+          setCreated(null);
         }
       }}
     >
@@ -65,20 +69,24 @@ export function AthleteFormDialog({ athlete, trigger }: { athlete?: Athlete; tri
         )}
       </DialogTrigger>
       <DialogContent>
-        {invite ? (
+        {created ? (
           <>
             <DialogHeader>
               <DialogTitle>Atleta creado</DialogTitle>
-              <DialogDescription>Comparte este link con {invite.name} para que cree su contraseña y entre desde el teléfono.</DialogDescription>
+              <DialogDescription>
+                Copia este link y compártelo con {created.name}.{" "}
+                {created.mode === "OPEN" ? "Entra directo, sin contraseña." : "La primera vez crea su contraseña."} Puedes cambiar el tipo de acceso
+                cuando quieras desde su ficha.
+              </DialogDescription>
             </DialogHeader>
-            <InviteLink path={invite.path} name={invite.name} />
+            <InviteLink path={created.path} name={created.name} message={`Hola ${created.name.split(" ")[0]}, aquí está tu entrenamiento:`} note={null} />
           </>
         ) : (
           <>
             <DialogHeader>
               <DialogTitle>{athlete ? "Editar atleta" : "Nuevo atleta"}</DialogTitle>
               <DialogDescription>
-                {athlete ? "Actualiza los datos del atleta." : "Se genera un link de activación para compartir por WhatsApp."}
+                {athlete ? "Actualiza los datos del atleta." : "Se genera un link personal para copiar y pegar, o enviar por WhatsApp."}
               </DialogDescription>
             </DialogHeader>
             <form onSubmit={onSubmit} className="grid gap-4">
@@ -86,9 +94,16 @@ export function AthleteFormDialog({ athlete, trigger }: { athlete?: Athlete; tri
                 <Label htmlFor="name">Nombre</Label>
                 <Input id="name" name="name" defaultValue={athlete?.name} required />
               </div>
+              {!athlete && (
+                <div className="grid gap-2">
+                  <Label>Acceso con el link</Label>
+                  <AccessModePicker value={mode} onChange={setMode} />
+                  <p className="text-xs text-muted-foreground">{ACCESS_MODE_INFO[mode].description}</p>
+                </div>
+              )}
               <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" name="email" type="email" defaultValue={athlete?.email} required />
+                <Label htmlFor="email">Email{emailRequired ? "" : " (opcional)"}</Label>
+                <Input id="email" name="email" type="email" defaultValue={athlete?.email ?? ""} required={emailRequired} />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="bodyWeightKg">Peso corporal (kg, opcional)</Label>

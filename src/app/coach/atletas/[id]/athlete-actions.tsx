@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { deleteAthlete, regenerateInvite, setAthleteActive } from "@/actions/athletes";
 import { AthleteFormDialog } from "@/components/coach/athlete-form-dialog";
 import { InviteLink } from "@/components/coach/invite-link";
+import type { AccessMode } from "@/generated/prisma/enums";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -31,7 +32,7 @@ export function AthleteActions({
   athlete,
   isSelf,
 }: {
-  athlete: { id: string; name: string; email: string; bodyWeightKg: number | null; notes: string | null; active: boolean };
+  athlete: { id: string; name: string; email: string | null; accessMode: AccessMode; bodyWeightKg: number | null; notes: string | null; active: boolean };
   isSelf: boolean;
 }) {
   const router = useRouter();
@@ -75,8 +76,8 @@ export function AthleteActions({
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuItem onSelect={onInvite}>
-            <KeyRound /> Link de activación o nueva contraseña
+          <DropdownMenuItem onSelect={onInvite} disabled={!athlete.email}>
+            <KeyRound /> Link para crear o cambiar contraseña
           </DropdownMenuItem>
           <DropdownMenuItem onSelect={onToggle}>
             <Power /> {athlete.active ? "Desactivar acceso" : "Reactivar acceso"}
