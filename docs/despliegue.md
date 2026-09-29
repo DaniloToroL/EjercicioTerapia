@@ -1,6 +1,6 @@
 # Despliegue en VPS Hostinger
 
-Todo corre en Docker en el mismo servidor: PostgreSQL, migraciones, la app, Caddy para HTTPS y un respaldo diario de la base. No hay servicios externos salvo Let's Encrypt para el certificado.
+Todo corre en Docker en el mismo servidor: PostgreSQL, migraciones, la app y un respaldo diario de la base. El nginx que ya tiene el VPS hace de proxy con HTTPS (certificado de Let's Encrypt con certbot). La app solo escucha en 127.0.0.1, así que no queda expuesta directamente.
 
 ## Requisitos
 
@@ -25,7 +25,7 @@ cp .env.example .env
 nano .env
 ```
 
-Completar `APP_DOMAIN`, `NEXTAUTH_URL` (con https), `NEXTAUTH_SECRET` y `POSTGRES_PASSWORD`. Para generar los secretos:
+Completar `NEXTAUTH_URL` (con https y el dominio real), `APP_PORT` si el 3000 ya está ocupado por otra app, `NEXTAUTH_SECRET` y `POSTGRES_PASSWORD`. Para generar los secretos:
 
 ```bash
 openssl rand -base64 32
@@ -43,9 +43,45 @@ La clave de Postgres debe tener solo letras y números (va dentro de una URL de 
 docker compose up -d --build
 ```
 
-El servicio `migrate` aplica las migraciones y carga la biblioteca base (46 ejercicios de la planilla y 1.324 del catálogo) y termina. Después arranca la app y Caddy obtiene el certificado HTTPS.
+El servicio `migrate` aplica las migraciones y carga la biblioteca base (46 ejercicios de la planilla y 1.324 del catálogo) y termina. Después arranca la app en `127.0.0.1:APP_PORT`. Para comprobar que responde (cambiar 3000 si se usó otro puerto):
 
-5. Abrir `https://APP_DOMAIN`. La primera vez aparece la configuración inicial para crear el centro y la cuenta dueña.
+```bash
+curl -I http://127.0.0.1:3000/login
+```
+
+5. Configurar nginx. Copiar el sitio incluido en el repositorio y editar `server_name` con el dominio real (y el puerto de `proxy_pass` si se cambió `APP_PORT`):
+
+```bash
+sudo cp deploy/nginx/ejercicio-terapia /etc/nginx/sites-available/ejercicio-terapia
+```
+
+```bash
+sudo nano /etc/nginx/sites-available/ejercicio-terapia
+```
+
+Activarlo, validar y recargar:
+
+```bash
+sudo ln -s /etc/nginx/sites-available/ejercicio-terapia /etc/nginx/sites-enabled/ejercicio-terapia
+```
+
+```bash
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+6. Obtener el certificado HTTPS. Certbot agrega el bloque 443 al mismo archivo y la redirección desde http:
+
+```bash
+sudo certbot --nginx -d entrenamiento.tudominio.cl
+```
+
+Si certbot no está instalado:
+
+```bash
+sudo apt install certbot python3-certbot-nginx
+```
+
+7. Abrir `https://` con el dominio configurado. La primera vez aparece la configuración inicial para crear el centro y la cuenta dueña.
 
 ## Operación
 
@@ -77,7 +113,7 @@ Las migraciones nuevas se aplican solas en cada arranque.
 |---|---|
 | `pgdata` | Base de datos |
 | `uploads` | Videos de ejercicios subidos desde la biblioteca |
-| `caddy_data` | Certificados HTTPS |
+| `/etc/letsencrypt` (del VPS) | Certificados HTTPS, renovados por certbot |
 | `./backups` | Respaldo diario de la base (`pg_dump`, se guardan 14 días) |
 
 Los respaldos quedan en el mismo servidor. Conviene copiarlos fuera de vez en cuando (por ejemplo, descargar la carpeta `backups` o activar los snapshots del VPS en Hostinger).

@@ -12,7 +12,7 @@ Plan de producto y decisiones: [docs/plan-producto.md](docs/plan-producto.md). D
 - shadcn/ui (Radix) y Tailwind CSS 4
 - dnd-kit para arrastrar y soltar, Recharts para gráficos
 - PWA instalable con cola local para registrar series sin señal
-- Docker Compose: base de datos, migraciones, app, Caddy (HTTPS) y respaldo diario
+- Docker Compose: base de datos, migraciones, app y respaldo diario; nginx del VPS como proxy HTTPS (sitio en `deploy/nginx`)
 
 ## Estructura
 

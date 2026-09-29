@@ -198,7 +198,7 @@ Todo queda en Docker en un VPS de Hostinger, sin servicios externos.
 | Registro sin señal | Cola local en el teléfono (localStorage) y service worker para abrir pantallas ya visitadas | El gimnasio es el peor lugar para depender de conexión |
 | Gráficos | Recharts (vía shadcn charts) | Series de tiempo y barras apiladas |
 | Video propio | Archivos subidos a un volumen Docker, servidos con soporte de Range | Sin servicio de streaming externo; YouTube sigue disponible para links existentes |
-| HTTPS | Caddy con certificado automático de Let's Encrypt | Un contenedor más, sin configuración manual |
+| HTTPS | nginx del VPS como proxy, certificado de Let's Encrypt con certbot | El servidor ya tiene nginx; la app solo escucha en 127.0.0.1 |
 | Respaldos | pg_dump diario en el mismo compose, 14 días | Copia fuera del servidor a cargo del administrador |
 
 Guía de instalación: [despliegue.md](despliegue.md).
