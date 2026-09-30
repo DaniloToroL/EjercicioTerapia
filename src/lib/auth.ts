@@ -4,6 +4,7 @@ import { createHash } from "crypto";
 import type { NextAuthOptions } from "next-auth";
 import { getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import type { Role } from "@/generated/prisma/enums";
 import { prisma } from "@/lib/prisma";
@@ -93,7 +94,20 @@ export const authOptions: NextAuthOptions = {
   },
 };
 
-export type SessionUser = { id: string; name: string; email: string | null; role: Role; orgId: string };
+export type SessionUser = {
+  id: string;
+  name: string;
+  email: string | null;
+  role: Role;
+  /** Centro con el que se está trabajando. Para el superadmin puede ser otro centro que abrió desde /admin. */
+  orgId: string;
+  /** Centro al que pertenece la cuenta. */
+  homeOrgId: string;
+  isSuperadmin: boolean;
+};
+
+/** Cookie con el centro que el superadmin abrió desde /admin. */
+export const ADMIN_ORG_COOKIE = "admin_org";
 
 export async function getCurrentUser(): Promise<SessionUser | null> {
   const session = await getServerSession(authOptions);
@@ -101,14 +115,46 @@ export async function getCurrentUser(): Promise<SessionUser | null> {
   // Se valida contra la base para reflejar desactivaciones o cambios de rol.
   const user = await prisma.user.findUnique({
     where: { id: session.user.id },
-    select: { id: true, name: true, email: true, role: true, orgId: true, active: true, accessMode: true, accessToken: true },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      orgId: true,
+      active: true,
+      isSuperadmin: true,
+      accessMode: true,
+      accessToken: true,
+      org: { select: { active: true } },
+    },
   });
   if (!user || !user.active) return null;
+  // Centro suspendido por el superadmin: nadie de ese centro entra.
+  if (!user.org.active && !user.isSuperadmin) return null;
   // Sesión abierta con link: deja de valer si el entrenador cambió el modo o generó un link nuevo.
   if (session.user.linkKey) {
     if (user.accessMode !== "OPEN" || !user.accessToken || linkKey(user.accessToken) !== session.user.linkKey) return null;
   }
-  return { id: user.id, name: user.name, email: user.email, role: user.role, orgId: user.orgId };
+
+  let orgId = user.orgId;
+  let role = user.role;
+  if (user.isSuperadmin) {
+    const target = (await cookies()).get(ADMIN_ORG_COOKIE)?.value;
+    if (target && target !== user.orgId) {
+      const org = await prisma.organization.findUnique({ where: { id: target }, select: { id: true } });
+      if (org) {
+        orgId = org.id;
+        role = "OWNER";
+      }
+    }
+  }
+  return { id: user.id, name: user.name, email: user.email, role, orgId, homeOrgId: user.orgId, isSuperadmin: user.isSuperadmin };
+}
+
+export async function requireSuperadmin() {
+  const user = await requireUser();
+  if (!user.isSuperadmin) redirect("/");
+  return user;
 }
 
 export async function requireUser() {

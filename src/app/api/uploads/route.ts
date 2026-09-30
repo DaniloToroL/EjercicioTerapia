@@ -5,8 +5,7 @@ import path from "path";
 import { Readable, Transform } from "stream";
 import { pipeline } from "stream/promises";
 import type { ReadableStream as NodeReadableStream } from "stream/web";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { getCurrentUser, isCoach } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { MAX_UPLOAD_BYTES, UPLOAD_DIR, VIDEO_TYPES } from "@/lib/uploads";
 
@@ -16,14 +15,15 @@ import { MAX_UPLOAD_BYTES, UPLOAD_DIR, VIDEO_TYPES } from "@/lib/uploads";
  * POST /api/uploads?exerciseId=...  Content-Type: video/mp4
  */
 export async function POST(request: Request) {
-  const session = await getServerSession(authOptions);
-  if (!session?.user || (session.user.role !== "OWNER" && session.user.role !== "COACH")) {
+  const user = await getCurrentUser();
+  if (!user || !isCoach(user)) {
     return Response.json({ error: "No autorizado" }, { status: 401 });
   }
   const exerciseId = new URL(request.url).searchParams.get("exerciseId");
   if (!exerciseId) return Response.json({ error: "Falta exerciseId" }, { status: 400 });
   const exercise = await prisma.exercise.findFirst({
-    where: { id: exerciseId, OR: [{ orgId: session.user.orgId }, { orgId: null }] },
+    // La biblioteca global solo la modifica el superadmin.
+    where: { id: exerciseId, OR: [{ orgId: user.orgId }, ...(user.isSuperadmin ? [{ orgId: null }] : [])] },
   });
   if (!exercise) return Response.json({ error: "Ejercicio no encontrado" }, { status: 404 });
 

@@ -37,6 +37,8 @@ openssl rand -hex 24
 
 La clave de Postgres debe tener solo letras y números (va dentro de una URL de conexión).
 
+Para el superadmin, poner `SUPERADMIN_EMAIL`. Si esa cuenta ya existe (por ejemplo, el dueño creado en `/setup`), en el próximo arranque queda marcada como superadmin sin tocar su contraseña. Si no existe, se crea con `SUPERADMIN_PASSWORD`, que después se puede borrar del `.env`. El panel queda en `/admin` y aparece como "Superadmin" en el menú.
+
 4. Levantar todo:
 
 ```bash

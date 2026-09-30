@@ -21,12 +21,14 @@ export function LibraryTable({
   page,
   pageSize,
   blockTypes,
+  canEditGlobal,
 }: {
   exercises: EditableExercise[];
   total: number;
   page: number;
   pageSize: number;
   blockTypes: { key: string; name: string }[];
+  canEditGlobal: boolean;
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -142,7 +144,14 @@ export function LibraryTable({
       </div>
 
       {editing && (
-        <ExerciseFormDialog key={editing.id} exercise={editing} blockTypes={blockTypes} open={!!editing} onOpenChange={(v) => !v && setEditing(null)} />
+        <ExerciseFormDialog
+          key={editing.id}
+          exercise={editing}
+          blockTypes={blockTypes}
+          open={!!editing}
+          onOpenChange={(v) => !v && setEditing(null)}
+          readOnly={editing.isGlobal && !canEditGlobal}
+        />
       )}
       {creating && <ExerciseFormDialog blockTypes={blockTypes} open={creating} onOpenChange={setCreating} />}
     </div>

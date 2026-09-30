@@ -32,6 +32,8 @@ export type EditableExercise = {
   videoUrl: string | null;
   source: string;
   archived: boolean;
+  /** Biblioteca global (sin centro): solo la edita el superadmin. */
+  isGlobal: boolean;
 };
 
 function uploadVideo(exerciseId: string, file: File, onProgress: (p: number) => void) {
@@ -59,11 +61,13 @@ export function ExerciseFormDialog({
   blockTypes,
   open,
   onOpenChange,
+  readOnly = false,
 }: {
   exercise?: EditableExercise | null;
   blockTypes: { key: string; name: string }[];
   open: boolean;
   onOpenChange: (v: boolean) => void;
+  readOnly?: boolean;
 }) {
   const router = useRouter();
   const [pending, setPending] = useState(false);
@@ -127,6 +131,31 @@ export function ExerciseFormDialog({
   }
 
   const previewProvider = videoUrl ? detectVideoProvider(videoUrl) : "NONE";
+
+  // Biblioteca global: los entrenadores la ven y la usan, pero solo el superadmin la modifica.
+  if (readOnly && exercise) {
+    return (
+      <Dialog open={open} onOpenChange={onOpenChange}>
+        <DialogContent className="max-h-[90svh] overflow-y-auto sm:max-w-2xl">
+          <DialogHeader>
+            <DialogTitle>{exercise.name}</DialogTitle>
+            <DialogDescription>
+              {PATTERN_LABELS[exercise.pattern]}, {LOAD_TYPE_LABELS[exercise.loadType].toLowerCase()}
+              {exercise.equipment.length ? `, ${exercise.equipment.join(", ")}` : ""}
+            </DialogDescription>
+          </DialogHeader>
+          {exercise.videoUrl && exercise.videoProvider !== "NONE" && (
+            <VideoPlayer provider={exercise.videoProvider} url={exercise.videoUrl} title={exercise.name} />
+          )}
+          {exercise.instructions && <p className="text-sm text-muted-foreground">{exercise.instructions}</p>}
+          <p className="rounded-md bg-muted p-3 text-xs text-muted-foreground">
+            Este ejercicio es de la biblioteca global de la plataforma y solo lo edita el superadmin. Si necesitas otra versión (otro video o
+            nombre), crea un ejercicio propio.
+          </p>
+        </DialogContent>
+      </Dialog>
+    );
+  }
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>

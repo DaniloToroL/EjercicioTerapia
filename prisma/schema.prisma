@@ -72,6 +72,7 @@ model Organization {
   name              String
   // Umbrales del check-in de regeneración: [{ max, label, message, level }]
   wellnessThresholds Json?
+  active            Boolean  @default(true) // el superadmin puede suspender un centro
   createdAt         DateTime @default(now())
 
   users      User[]
@@ -93,6 +94,8 @@ model User {
   birthDate      DateTime? @db.Date
   notes          String?
   active         Boolean   @default(true)
+  // Administra toda la plataforma: todos los centros y la biblioteca global. Se suma a su rol en su centro.
+  isSuperadmin   Boolean   @default(false)
   inviteToken    String?   @unique
   inviteExpires  DateTime?
   consentAt      DateTime?

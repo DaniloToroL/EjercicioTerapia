@@ -1,0 +1,1643 @@
+[
+ {
+  "id": "rock-back-hip-mob",
+  "name": "Rock back hip mob (rodilla separada)",
+  "videoUrl": "https://www.youtube.com/watch?v=gst0C1NCKm0",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "half-kneeling-tspine-kb",
+  "name": "Half kneeling T-spine rotation KB",
+  "videoUrl": "https://www.youtube.com/shorts/C3-Q7rHD92E",
+  "pattern": "MOBILITY",
+  "loadType": "EXTERNAL",
+  "block": "construccion",
+  "equipment": [
+   "kettlebell"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "tall-kneeling-kb-halo",
+  "name": "Tall kneeling KB halo",
+  "videoUrl": "https://www.youtube.com/shorts/2-grmRN2SbA",
+  "pattern": "CORE",
+  "loadType": "EXTERNAL",
+  "block": "construccion",
+  "equipment": [
+   "kettlebell"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "half-kneeling-cable-chop",
+  "name": "Half kneeling cable chop",
+  "videoUrl": "https://www.youtube.com/shorts/EzoMXce9M-k",
+  "pattern": "CORE",
+  "loadType": "EXTERNAL",
+  "block": "construccion",
+  "equipment": [
+   "polea"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "swimming-prone",
+  "name": "Swimming prone",
+  "videoUrl": "https://youtube.com/shorts/hmUYLIYHLVA?si=XITmQWXCQN6Zm9Fw",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "shoulder-cars-half-kneeling",
+  "name": "Shoulder CARs half kneeling",
+  "videoUrl": "https://youtube.com/shorts/wkzQPeADIow?si=J17QEtcPc1IfPpGC",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": true
+ },
+ {
+  "id": "single-arm-plank",
+  "name": "Single arm plank",
+  "videoUrl": "https://youtube.com/shorts/hhiBPV0-jx0?si=ocNWukgo3Yhpb9Yx",
+  "pattern": "CORE",
+  "loadType": "TIME",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": true
+ },
+ {
+  "id": "deep-squat-hamstring-stretch",
+  "name": "Deep squat to hamstring stretch",
+  "videoUrl": "https://www.youtube.com/shorts/yTK709M7Fbo",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "kb-windmill-half-kneeling",
+  "name": "KB windmill half kneeling",
+  "videoUrl": "https://www.youtube.com/shorts/UzCbtDBQ8t4",
+  "pattern": "CORE",
+  "loadType": "EXTERNAL",
+  "block": "construccion",
+  "equipment": [
+   "kettlebell"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "march-glute",
+  "name": "March glute",
+  "videoUrl": "https://www.youtube.com/shorts/-sTDH8Chc1E",
+  "pattern": "HINGE",
+  "loadType": "BODYWEIGHT",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "dns-star-pattern",
+  "name": "DNS star pattern",
+  "videoUrl": "https://www.youtube.com/shorts/JXtaRcrTuF4",
+  "pattern": "CORE",
+  "loadType": "BODYWEIGHT",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "wall-slide",
+  "name": "Wall slide",
+  "videoUrl": "https://www.youtube.com/shorts/OtgQDv7u1TM",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "dorsiflex-kb",
+  "name": "Dorsiflexión con KB",
+  "videoUrl": "https://www.youtube.com/shorts/t0dW_gbaQG0",
+  "pattern": "MOBILITY",
+  "loadType": "EXTERNAL",
+  "block": "construccion",
+  "equipment": [
+   "kettlebell"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "bridge-glute-band",
+  "name": "Bridge glute with band",
+  "videoUrl": "https://youtube.com/shorts/p5N_fok9YCM?si=39_2BLTyc8QbFPeZ",
+  "pattern": "HINGE",
+  "loadType": "BAND",
+  "block": "construccion",
+  "equipment": [
+   "banda"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "side-plank-hip-lift",
+  "name": "Side plank hip lift",
+  "videoUrl": "https://www.youtube.com/shorts/rGRFI5f09ls",
+  "pattern": "CORE",
+  "loadType": "BODYWEIGHT",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": true
+ },
+ {
+  "id": "kick-flow",
+  "name": "Kick flow",
+  "videoUrl": "https://www.youtube.com/shorts/iWSnrHHDNe8",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "calentamiento",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "wall-drill-load-lift",
+  "name": "Wall drill load & lift",
+  "videoUrl": "https://www.youtube.com/shorts/2Qki51CPLmQ",
+  "pattern": "LOCOMOTION",
+  "loadType": "BODYWEIGHT",
+  "block": "calentamiento",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "pin-squat-quarter",
+  "name": "Pin squat 1/4 (grábate) alta velocidad",
+  "videoUrl": "https://www.youtube.com/shorts/ZFyQd1PyU-s",
+  "pattern": "SQUAT",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "push-up-tempo",
+  "name": "Push up tempo 3\" bajada 2\" abajo 1 subida",
+  "videoUrl": "https://youtube.com/shorts/-nqGGKBDZtk?si=Tq1C8NDGRAkmNCf6",
+  "pattern": "HORIZONTAL_PUSH",
+  "loadType": "BODYWEIGHT",
+  "block": "calentamiento",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "shoulder-act-band",
+  "name": "Shoulder act band",
+  "videoUrl": "https://youtube.com/shorts/qJz79bK7QS8?si=ywpJMde9okoVvHcS",
+  "pattern": "MOBILITY",
+  "loadType": "BAND",
+  "block": "calentamiento",
+  "equipment": [
+   "banda"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "bb-bench-press-pause",
+  "name": "BB bench press (3\" de pausa)",
+  "videoUrl": "https://www.youtube.com/watch?v=ejI1Nlsul9k",
+  "pattern": "HORIZONTAL_PUSH",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "barra"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "bb-hex-deadlift-pause",
+  "name": "BB hexagonal deadlift (3\" pausa)",
+  "videoUrl": "https://youtube.com/shorts/ZJPZQklCSLs?si=Qj6yhdP1idUYdUud",
+  "pattern": "HINGE",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "barra hexagonal"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "banded-single-leg-airplane",
+  "name": "Banded single leg airplane",
+  "videoUrl": "https://www.youtube.com/results?search_query=airplane+exercise+WITH+BAND",
+  "pattern": "MOBILITY",
+  "loadType": "BAND",
+  "block": "calentamiento",
+  "equipment": [
+   "banda"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "hanging-scapular-cars",
+  "name": "Hanging scapular CARs",
+  "videoUrl": "https://www.youtube.com/shorts/1IYVBktziso",
+  "pattern": "VERTICAL_PULL",
+  "loadType": "BODYWEIGHT",
+  "block": "calentamiento",
+  "equipment": [
+   "barra fija"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "pull-up-escapular",
+  "name": "Pull up escapular",
+  "videoUrl": "https://www.youtube.com/shorts/9M8ylnbriB0",
+  "pattern": "VERTICAL_PULL",
+  "loadType": "BODYWEIGHT",
+  "block": "calentamiento",
+  "equipment": [
+   "barra fija"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "pull-up-iso-hold",
+  "name": "Pull up ISO hold 90°",
+  "videoUrl": "https://www.youtube.com/shorts/3TA5WRxQtQ0",
+  "pattern": "VERTICAL_PULL",
+  "loadType": "TIME",
+  "block": "calentamiento",
+  "equipment": [
+   "barra fija"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "depth-jump",
+  "name": "Depth jump",
+  "videoUrl": "https://www.youtube.com/watch?v=DxzbXy0lC6Y",
+  "pattern": "PLYOMETRIC",
+  "loadType": "CONTACTS",
+  "block": "pliometria",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "front-monster-walk",
+  "name": "Front monster walk",
+  "videoUrl": "https://www.youtube.com/shorts/yrAnmghzZ-Y",
+  "pattern": "LOCOMOTION",
+  "loadType": "BAND",
+  "block": "calentamiento",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "deep-squat-spine-rotation",
+  "name": "Deep squat spine rotation",
+  "videoUrl": "https://www.youtube.com/shorts/hKpehetjeA4",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "calentamiento",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "bb-squat-pause",
+  "name": "BB squat 3\" pausa",
+  "videoUrl": "https://www.youtube.com/shorts/goIR8GJ0QuA",
+  "pattern": "SQUAT",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "barra"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "cars-escapular",
+  "name": "CARs escapular",
+  "videoUrl": "https://youtube.com/shorts/pN_QEJNY3kc?si=SYw-w5O2ZwV6h4-g",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "primario",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "pull-up-lastrado",
+  "name": "Pull up lastrado (3\" pausa)",
+  "videoUrl": "https://www.youtube.com/shorts/9rckBLbVe8c",
+  "pattern": "VERTICAL_PULL",
+  "loadType": "BODYWEIGHT",
+  "block": "primario",
+  "equipment": [
+   "barra fija"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "pull-up",
+  "name": "Pull up",
+  "videoUrl": "https://youtube.com/shorts/eDP_OOhMTZ4?si=I2J4YHMII8G0EBC4",
+  "pattern": "VERTICAL_PULL",
+  "loadType": "BODYWEIGHT",
+  "block": "primario",
+  "equipment": [
+   "barra fija"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "2db-step-up",
+  "name": "2 DB step up (opción 1)",
+  "videoUrl": "https://www.youtube.com/shorts/8q9LVgN2RD4",
+  "pattern": "LUNGE",
+  "loadType": "EXTERNAL",
+  "block": "variabilidad",
+  "equipment": [
+   "mancuernas"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "upright-cable-row",
+  "name": "Upright cable row",
+  "videoUrl": "https://www.youtube.com/shorts/WkBVYccJf34",
+  "pattern": "ISOLATION",
+  "loadType": "EXTERNAL",
+  "block": "variabilidad",
+  "equipment": [
+   "polea"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "bb-overhead-press",
+  "name": "BB overhead press",
+  "videoUrl": "https://www.youtube.com/shorts/zoN5EH50Dro",
+  "pattern": "VERTICAL_PUSH",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "barra"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "hip-thrust",
+  "name": "Hip thrust",
+  "videoUrl": null,
+  "pattern": "HINGE",
+  "loadType": "EXTERNAL",
+  "block": "secundario",
+  "equipment": ["barra", "banco"],
+  "unilateral": false
+ },
+ {
+  "id": "bb-rdl",
+  "name": "BB RDL",
+  "videoUrl": "https://www.youtube.com/shorts/IGt0IfvtN0M",
+  "pattern": "HINGE",
+  "loadType": "EXTERNAL",
+  "block": "secundario",
+  "equipment": [
+   "barra"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "scorpion-90",
+  "name": "Scorpion 90°",
+  "videoUrl": "https://www.youtube.com/shorts/lTOFBGA2VRM",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "secundario",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "2db-seated-arnold-press",
+  "name": "2 DB seated Arnold press",
+  "videoUrl": "https://www.youtube.com/shorts/Kg8JD8l6ezw",
+  "pattern": "VERTICAL_PUSH",
+  "loadType": "EXTERNAL",
+  "block": "secundario",
+  "equipment": [
+   "mancuernas"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "bent-over-row",
+  "name": "Bent over row",
+  "videoUrl": "https://www.youtube.com/watch?v=9Gf-Ourup_k",
+  "pattern": "HORIZONTAL_PULL",
+  "loadType": "EXTERNAL",
+  "block": "secundario",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "elevacion-talones",
+  "name": "Elevación de talones",
+  "videoUrl": "https://www.youtube.com/shorts/EyHze_DHQq0",
+  "pattern": "ISOLATION",
+  "loadType": "EXTERNAL",
+  "block": "secundario",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "toe-squat",
+  "name": "Toe squat",
+  "videoUrl": "https://www.youtube.com/watch?v=dRanC1pK9Js",
+  "pattern": "SQUAT",
+  "loadType": "EXTERNAL",
+  "block": "secundario",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "leg-extension",
+  "name": "Leg extension",
+  "videoUrl": "https://www.youtube.com/shorts/t8--Y-pjTmg",
+  "pattern": "ISOLATION",
+  "loadType": "EXTERNAL",
+  "block": "variabilidad",
+  "equipment": [
+   "máquina"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "2db-curl-biceps",
+  "name": "2 DB curl bíceps",
+  "videoUrl": "https://www.youtube.com/shorts/09AYfVFf7pg",
+  "pattern": "ISOLATION",
+  "loadType": "EXTERNAL",
+  "block": "variabilidad",
+  "equipment": [
+   "mancuernas"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "seated-leg-curl",
+  "name": "Seated leg curl",
+  "videoUrl": "https://www.youtube.com/shorts/6IvQvWZmEsw",
+  "pattern": "ISOLATION",
+  "loadType": "EXTERNAL",
+  "block": "variabilidad",
+  "equipment": [
+   "máquina"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "half-hip-cars",
+  "name": "1/2 hip CARs",
+  "videoUrl": "https://www.youtube.com/shorts/22IXQ6VdJDY",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "2db-bench-incline-row",
+  "name": "2 DB bench incline row",
+  "videoUrl": "https://www.youtube.com/shorts/czoQ_ncuqqI",
+  "pattern": "HORIZONTAL_PULL",
+  "loadType": "EXTERNAL",
+  "block": "secundario",
+  "equipment": [
+   "mancuernas"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "2db-gorilla-row",
+  "name": "2 DB gorilla row",
+  "videoUrl": "https://www.youtube.com/shorts/4yvjpW6Rlhc",
+  "pattern": "HORIZONTAL_PULL",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "mancuernas"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "2db-lunge-walk-squat",
+  "name": "2 DB lunge walk squat",
+  "videoUrl": "https://youtube.com/shorts/2ea3_b9rFdM?si=lKSwOnDktYis5pZJ",
+  "pattern": "LUNGE",
+  "loadType": "EXTERNAL",
+  "block": "secundario",
+  "equipment": [
+   "mancuernas"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "2db-push-press",
+  "name": "2 DB push press",
+  "videoUrl": "https://www.youtube.com/shorts/EYOumY8pY2U",
+  "pattern": "VERTICAL_PUSH",
+  "loadType": "EXTERNAL",
+  "block": "calentamiento",
+  "equipment": [
+   "mancuernas"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "2db-rdl-bulgarian",
+  "name": "2 DB RDL bulgarian",
+  "videoUrl": "https://www.youtube.com/shorts/zCureUnuflU",
+  "pattern": "HINGE",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "mancuernas"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "2db-reverse-lunge-squat",
+  "name": "2 DB reverse lunge squat",
+  "videoUrl": "https://www.youtube.com/shorts/b_2qgdXT_QQ",
+  "pattern": "LUNGE",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "mancuernas"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "2db-reverse-lunge",
+  "name": "2 DB reverse lunge",
+  "videoUrl": "https://www.youtube.com/shorts/pIrgWKqL3O4",
+  "pattern": "LUNGE",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "mancuernas"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "2db-split-squat-iso",
+  "name": "2 DB split squat ISO hold",
+  "videoUrl": "https://www.youtube.com/shorts/9w1fSrdqEPE",
+  "pattern": "LUNGE",
+  "loadType": "TIME",
+  "block": "calentamiento",
+  "equipment": [
+   "mancuernas"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "2db-split-squat",
+  "name": "2 DB split squat",
+  "videoUrl": "https://www.youtube.com/shorts/hYNhUFqT0IM",
+  "pattern": "LUNGE",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "mancuernas"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "2db-step-up-2",
+  "name": "2 DB step up",
+  "videoUrl": "https://www.youtube.com/watch?v=37tVohr7LcE",
+  "pattern": "LUNGE",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "mancuernas"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "2kb-gorilla-row",
+  "name": "2 KB gorilla row",
+  "videoUrl": "https://www.youtube.com/shorts/e9oCtQdOwU4",
+  "pattern": "HORIZONTAL_PULL",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "kettlebell"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "90-90-hamstring",
+  "name": "90/90 hamstring",
+  "videoUrl": "https://www.youtube.com/shorts/GNEfNkFuoWU",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "primario",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "90-90-hinge",
+  "name": "90/90 hinge",
+  "videoUrl": "https://www.youtube.com/shorts/GPyNc2bKlAs",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "a-skip",
+  "name": "A-skip avanzando",
+  "videoUrl": "https://www.youtube.com/shorts/6qSYlrN4XO4",
+  "pattern": "LOCOMOTION",
+  "loadType": "TIME",
+  "block": "calentamiento",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "adductor-machine",
+  "name": "Adductor machine",
+  "videoUrl": "https://www.youtube.com/shorts/BmMmt-c9aNM",
+  "pattern": "ISOLATION",
+  "loadType": "EXTERNAL",
+  "block": "secundario",
+  "equipment": [
+   "máquina"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "apertura-cables",
+  "name": "Apertura con cables",
+  "videoUrl": "https://www.youtube.com/shorts/QEW6RO0O-ak",
+  "pattern": "ISOLATION",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "polea"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "banded-deadlift",
+  "name": "Banded deadlift (rápidas)",
+  "videoUrl": "https://www.youtube.com/shorts/rGPFleutSTQ",
+  "pattern": "HINGE",
+  "loadType": "BAND",
+  "block": "calentamiento",
+  "equipment": [
+   "banda"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "banded-side-lying-hip-abd",
+  "name": "Banded side lying hip abduction",
+  "videoUrl": "https://www.youtube.com/shorts/Gwlp_wL1wPo",
+  "pattern": "ISOLATION",
+  "loadType": "BAND",
+  "block": "calentamiento",
+  "equipment": [
+   "banda"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "pistol-squat-banded",
+  "name": "Pistol squat banded",
+  "videoUrl": "https://www.youtube.com/shorts/WTMhXaduOuE",
+  "pattern": "SQUAT",
+  "loadType": "BODYWEIGHT",
+  "block": "primario",
+  "equipment": [
+   "banda"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "bb-bench-press-explosivo",
+  "name": "BB bench press explosivo (3\" pausa)",
+  "videoUrl": "https://www.youtube.com/shorts/6l4Mii5c9Ug",
+  "pattern": "HORIZONTAL_PUSH",
+  "loadType": "EXTERNAL",
+  "block": "potencia",
+  "equipment": [
+   "barra"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "bb-box-squat",
+  "name": "BB box squat",
+  "videoUrl": "https://www.youtube.com/shorts/6_xQf5A3WmE",
+  "pattern": "SQUAT",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "barra",
+   "cajón"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "bb-deadlift",
+  "name": "BB deadlift",
+  "videoUrl": "https://www.youtube.com/watch?v=tTebCvvJY7o",
+  "pattern": "HINGE",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "barra"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "bb-push-press",
+  "name": "BB push press",
+  "videoUrl": "https://www.youtube.com/shorts/XaSIn0cva7w",
+  "pattern": "VERTICAL_PUSH",
+  "loadType": "EXTERNAL",
+  "block": "calentamiento",
+  "equipment": [
+   "barra"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "bb-rdl-split",
+  "name": "BB RDL split",
+  "videoUrl": "https://www.youtube.com/shorts/hd0NIPdETX0",
+  "pattern": "HINGE",
+  "loadType": "EXTERNAL",
+  "block": "secundario",
+  "equipment": [
+   "barra"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "bb-split-squat",
+  "name": "BB split squat (baja lento)",
+  "videoUrl": "https://www.youtube.com/shorts/zC5FQlE5oZ0",
+  "pattern": "LUNGE",
+  "loadType": "EXTERNAL",
+  "block": "secundario",
+  "equipment": [
+   "barra"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "bb-squat-profunda",
+  "name": "BB squat profunda",
+  "videoUrl": "https://www.youtube.com/shorts/dW3zj79xfrc",
+  "pattern": "SQUAT",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "barra"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "bear-crawl-shoulder-tap",
+  "name": "Bear crawl shoulder tap",
+  "videoUrl": "https://www.youtube.com/shorts/IzJhfrGQsjY",
+  "pattern": "CORE",
+  "loadType": "BODYWEIGHT",
+  "block": "primario",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "bear-plank",
+  "name": "Bear plank",
+  "videoUrl": "https://www.youtube.com/shorts/-PIvmrrgJpM",
+  "pattern": "CORE",
+  "loadType": "TIME",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "biceps-polea",
+  "name": "Bíceps polea",
+  "videoUrl": "https://www.youtube.com/shorts/_DIqfJzUDPY",
+  "pattern": "ISOLATION",
+  "loadType": "EXTERNAL",
+  "block": "variabilidad",
+  "equipment": [
+   "polea"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "box-drop",
+  "name": "Box drop",
+  "videoUrl": "https://www.youtube.com/shorts/mq4iIr09uK4",
+  "pattern": "PLYOMETRIC",
+  "loadType": "CONTACTS",
+  "block": "pliometria",
+  "equipment": [
+   "cajón"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "bridge-hamstring-sl-iso",
+  "name": "Bridge hamstring single leg ISO",
+  "videoUrl": "https://www.youtube.com/shorts/azIvHDfhASU",
+  "pattern": "HINGE",
+  "loadType": "TIME",
+  "block": "primario",
+  "equipment": [],
+  "unilateral": true
+ },
+ {
+  "id": "broad-jump",
+  "name": "Broad jump",
+  "videoUrl": "https://www.youtube.com/shorts/v0yrBWA3eEs",
+  "pattern": "PLYOMETRIC",
+  "loadType": "CONTACTS",
+  "block": "pliometria",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "cable-row-hk-tempo",
+  "name": "Cable row half kneeling con tempo",
+  "videoUrl": "https://www.youtube.com/shorts/t-x13H1dC0w",
+  "pattern": "HORIZONTAL_PULL",
+  "loadType": "EXTERNAL",
+  "block": "secundario",
+  "equipment": [
+   "polea"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "cable-row-half-kneeling",
+  "name": "Cable row half kneeling",
+  "videoUrl": "https://youtube.com/shorts/zdN7_2LKdIA?si=g2iC-6A8IBDsFh02",
+  "pattern": "HORIZONTAL_PULL",
+  "loadType": "EXTERNAL",
+  "block": "construccion",
+  "equipment": [
+   "polea"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "cable-row-tk-single-arm",
+  "name": "Cable row tall kneeling single arm",
+  "videoUrl": "https://www.youtube.com/watch?v=tH47N_PCXE4",
+  "pattern": "HORIZONTAL_PULL",
+  "loadType": "EXTERNAL",
+  "block": "calentamiento",
+  "equipment": [
+   "polea"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "cars-escapular-cuadrupedia",
+  "name": "CARs escapular en cuadrupedia",
+  "videoUrl": "https://www.youtube.com/shorts/cZZeRIx5aUM",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "chin-up",
+  "name": "Chin up",
+  "videoUrl": "https://www.youtube.com/shorts/jIvbJzs1V4I",
+  "pattern": "VERTICAL_PULL",
+  "loadType": "BODYWEIGHT",
+  "block": "primario",
+  "equipment": [
+   "barra fija"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "cmj",
+  "name": "CMJ",
+  "videoUrl": "https://www.youtube.com/shorts/RgdJdh19emU",
+  "pattern": "PLYOMETRIC",
+  "loadType": "CONTACTS",
+  "block": "calentamiento",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "cmj-90-rebound",
+  "name": "CMJ 90° rebound",
+  "videoUrl": "https://www.youtube.com/shorts/c887yNuXd6o",
+  "pattern": "PLYOMETRIC",
+  "loadType": "CONTACTS",
+  "block": "pliometria",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "cmj-continuo",
+  "name": "CMJ continuo",
+  "videoUrl": "https://youtu.be/7_hSCR5jrl8?feature=shared",
+  "pattern": "PLYOMETRIC",
+  "loadType": "CONTACTS",
+  "block": "pliometria",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "couch-stretch-dynamic",
+  "name": "Couch stretch dynamic",
+  "videoUrl": "https://www.youtube.com/watch?v=tCmiffEXK3s",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "nordic-hamstring-ecc",
+  "name": "Nordic hamstring excéntrico",
+  "videoUrl": "https://youtube.com/shorts/7o_-YMUdLdM?si=Jt9l0fGrOH4FiouB",
+  "pattern": "HINGE",
+  "loadType": "BODYWEIGHT",
+  "block": "secundario",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "curtsy-squat",
+  "name": "Curtsy squat",
+  "videoUrl": "https://www.youtube.com/shorts/-i1G2YuuDW0",
+  "pattern": "LUNGE",
+  "loadType": "BODYWEIGHT",
+  "block": "primario",
+  "equipment": [],
+  "unilateral": true
+ },
+ {
+  "id": "db-rdl-split-rotation",
+  "name": "DB RDL split rotation",
+  "videoUrl": "https://www.youtube.com/shorts/Qfb-nh-HDls",
+  "pattern": "HINGE",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "mancuernas"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "db-row-plank",
+  "name": "DB row plank",
+  "videoUrl": "https://youtube.com/shorts/GfptgUS4QRA?si=wM4AgTjghhtDf6Mk",
+  "pattern": "CORE",
+  "loadType": "EXTERNAL",
+  "block": "construccion",
+  "equipment": [
+   "mancuernas"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "db-single-arm-bench-row",
+  "name": "DB single arm bench row",
+  "videoUrl": "https://www.youtube.com/shorts/TcaNtjAi4Z4",
+  "pattern": "HORIZONTAL_PULL",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "mancuernas"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "db-wall-support-row",
+  "name": "DB wall support row",
+  "videoUrl": "https://youtube.com/shorts/PQSibBvh8eY?si=KLyDe0jL5Ruc24wx",
+  "pattern": "HORIZONTAL_PULL",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "mancuernas"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "depth-drop-single-leg",
+  "name": "Depth drop single leg",
+  "videoUrl": "https://www.youtube.com/shorts/imB7NUA_nrU",
+  "pattern": "PLYOMETRIC",
+  "loadType": "CONTACTS",
+  "block": "pliometria",
+  "equipment": [],
+  "unilateral": true
+ },
+ {
+  "id": "dips",
+  "name": "Dips",
+  "videoUrl": "https://www.youtube.com/shorts/s5BLhbKWD3E",
+  "pattern": "VERTICAL_PUSH",
+  "loadType": "BODYWEIGHT",
+  "block": "primario",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "dorsiflexion-add-kb",
+  "name": "Dorsiflexión + aducción con KB",
+  "videoUrl": "https://www.youtube.com/shorts/iV7Bng7JBwA",
+  "pattern": "MOBILITY",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "kettlebell"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "dragon-flag",
+  "name": "Dragon flag",
+  "videoUrl": "https://youtube.com/shorts/5xIHT4QspeY?si=DKA64DUQ7zJiwQ6P",
+  "pattern": "CORE",
+  "loadType": "BODYWEIGHT",
+  "block": "primario",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "drop-depth-lateral-bound",
+  "name": "Drop depth to lateral bound",
+  "videoUrl": "https://youtube.com/shorts/lz0daC4XwKQ?si=rZec-xyUm9F6rt7e",
+  "pattern": "PLYOMETRIC",
+  "loadType": "CONTACTS",
+  "block": "pliometria",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "eccentric-box-pistol",
+  "name": "Pistol squat excéntrico al cajón",
+  "videoUrl": "https://www.youtube.com/shorts/fZA6z95tA1k",
+  "pattern": "SQUAT",
+  "loadType": "BODYWEIGHT",
+  "block": "primario",
+  "equipment": [
+   "cajón"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "cossack-pie-elevado",
+  "name": "Cossack squat con pie elevado",
+  "videoUrl": "https://www.youtube.com/shorts/IHCB34h7M8I",
+  "pattern": "LUNGE",
+  "loadType": "BODYWEIGHT",
+  "block": "primario",
+  "equipment": [],
+  "unilateral": true
+ },
+ {
+  "id": "face-pull-rotacion",
+  "name": "Face pull + rotación externa",
+  "videoUrl": "https://www.youtube.com/shorts/oWncQ0QzVBY",
+  "pattern": "ISOLATION",
+  "loadType": "EXTERNAL",
+  "block": "calentamiento",
+  "equipment": [
+   "polea"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "goblet-pancake",
+  "name": "Goblet pancake",
+  "videoUrl": "https://youtube.com/shorts/HwQb6w7jhf4?si=onEeJ51qrClBml9k",
+  "pattern": "MOBILITY",
+  "loadType": "EXTERNAL",
+  "block": "secundario",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "hip-abduction-band-iso",
+  "name": "Hip abduction con banda ISO hold",
+  "videoUrl": "https://www.youtube.com/shorts/dNWMvoXpOJg",
+  "pattern": "ISOLATION",
+  "loadType": "TIME",
+  "block": "calentamiento",
+  "equipment": [
+   "banda"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "hip-hike-banded",
+  "name": "Hip hike banded",
+  "videoUrl": "https://www.youtube.com/shorts/_A5mbYhxfyM",
+  "pattern": "ISOLATION",
+  "loadType": "BAND",
+  "block": "primario",
+  "equipment": [
+   "banda"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "hollow-hold",
+  "name": "Hollow hold",
+  "videoUrl": "https://www.youtube.com/shorts/pN_YFk4Lx8Q",
+  "pattern": "CORE",
+  "loadType": "TIME",
+  "block": "calentamiento",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "horizontal-press-band",
+  "name": "Horizontal press con banda",
+  "videoUrl": "https://www.youtube.com/shorts/Ajy8D9vq9nc",
+  "pattern": "HORIZONTAL_PUSH",
+  "loadType": "BAND",
+  "block": "calentamiento",
+  "equipment": [
+   "banda"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "kb-arm-bar",
+  "name": "KB arm bar",
+  "videoUrl": "https://www.youtube.com/shorts/jMZHGM2Od70",
+  "pattern": "MOBILITY",
+  "loadType": "EXTERNAL",
+  "block": "construccion",
+  "equipment": [
+   "kettlebell"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "kb-goblet-squat",
+  "name": "KB goblet squat",
+  "videoUrl": "https://www.youtube.com/shorts/BbDJcSUh7iM",
+  "pattern": "SQUAT",
+  "loadType": "EXTERNAL",
+  "block": "calentamiento",
+  "equipment": [
+   "kettlebell"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "kb-plank-drags",
+  "name": "KB plank drags",
+  "videoUrl": "https://www.youtube.com/shorts/Vk3qLh6QywM",
+  "pattern": "CORE",
+  "loadType": "EXTERNAL",
+  "block": "construccion",
+  "equipment": [
+   "kettlebell"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "kb-pull-through",
+  "name": "KB pull through",
+  "videoUrl": "https://www.youtube.com/shorts/xdPjToOJM1o",
+  "pattern": "HINGE",
+  "loadType": "EXTERNAL",
+  "block": "construccion",
+  "equipment": [
+   "kettlebell"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "kb-rdl-single-leg",
+  "name": "KB RDL single leg",
+  "videoUrl": "https://www.youtube.com/shorts/s32cCgmRV3I",
+  "pattern": "HINGE",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "kettlebell"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "kb-rdl-split-rotation",
+  "name": "KB RDL split rotation",
+  "videoUrl": "https://www.youtube.com/shorts/jsk2oZ3OfBg",
+  "pattern": "HINGE",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "kettlebell"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "lateral-monster-walk",
+  "name": "Lateral monster walk (de 2 en 2)",
+  "videoUrl": "https://www.youtube.com/shorts/kqeqCHh0SxE",
+  "pattern": "LOCOMOTION",
+  "loadType": "BAND",
+  "block": "calentamiento",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "lateral-shuffle",
+  "name": "Lateral shuffle (ir y volver es 1)",
+  "videoUrl": "https://www.youtube.com/shorts/nqLsCj7pgbw",
+  "pattern": "LOCOMOTION",
+  "loadType": "BODYWEIGHT",
+  "block": "calentamiento",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "lateral-wall-iso-hold",
+  "name": "Lateral wall drill ISO hold",
+  "videoUrl": "https://www.youtube.com/shorts/nJxTj2vsrF0",
+  "pattern": "LOCOMOTION",
+  "loadType": "TIME",
+  "block": "pliometria",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "monster-walk-hip-hinge",
+  "name": "Monster walk hip hinge",
+  "videoUrl": "https://www.youtube.com/shorts/1DCjhDQrUhU",
+  "pattern": "LOCOMOTION",
+  "loadType": "BAND",
+  "block": "calentamiento",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "open-book-stretch",
+  "name": "Open book stretch",
+  "videoUrl": "https://www.youtube.com/shorts/SKapoHxQxuk",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "pistol-ecc-banca",
+  "name": "Pistol squat excéntrico sobre banca",
+  "videoUrl": "https://www.youtube.com/watch?v=zP11e7TJo-Y",
+  "pattern": "SQUAT",
+  "loadType": "BODYWEIGHT",
+  "block": "variabilidad",
+  "equipment": [],
+  "unilateral": true
+ },
+ {
+  "id": "pistol-squat-trx",
+  "name": "Pistol squat TRX",
+  "videoUrl": "https://www.youtube.com/shorts/sTtgBOMgAuE",
+  "pattern": "SQUAT",
+  "loadType": "BODYWEIGHT",
+  "block": "secundario",
+  "equipment": [
+   "TRX"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "plank-walk-down",
+  "name": "Plank walk down",
+  "videoUrl": "https://www.youtube.com/shorts/ndK6_gm2kcI",
+  "pattern": "CORE",
+  "loadType": "BODYWEIGHT",
+  "block": "primario",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "pallof-press-banda",
+  "name": "Pallof press con banda",
+  "videoUrl": "https://www.youtube.com/shorts/99evyH71IWs",
+  "pattern": "CORE",
+  "loadType": "BAND",
+  "block": "construccion",
+  "equipment": [
+   "banda"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "pallof-press-tk",
+  "name": "Pallof press tall kneeling",
+  "videoUrl": "https://www.youtube.com/shorts/tPypDa6G-Wk",
+  "pattern": "CORE",
+  "loadType": "EXTERNAL",
+  "block": "construccion",
+  "equipment": [
+   "polea"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "pull-up-pausa",
+  "name": "Pull up con pausa",
+  "videoUrl": "https://www.youtube.com/shorts/9rckBLbVe8c",
+  "pattern": "VERTICAL_PULL",
+  "loadType": "BODYWEIGHT",
+  "block": "primario",
+  "equipment": [
+   "barra fija"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "pull-up-eccentric",
+  "name": "Pull up excéntrico",
+  "videoUrl": "https://youtube.com/shorts/ULDcIsw8EsQ?si=mouwSNXASgaA4bG4",
+  "pattern": "VERTICAL_PULL",
+  "loadType": "BODYWEIGHT",
+  "block": "calentamiento",
+  "equipment": [
+   "barra fija"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "pull-up-neutro",
+  "name": "Pull up agarre neutro",
+  "videoUrl": "https://www.youtube.com/shorts/fsBULJ8BDNE",
+  "pattern": "VERTICAL_PULL",
+  "loadType": "BODYWEIGHT",
+  "block": "primario",
+  "equipment": [
+   "barra fija"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "push-up-iso-hold",
+  "name": "Push up ISO hold",
+  "videoUrl": "https://www.youtube.com/watch?v=j6zRtzwUu-4",
+  "pattern": "HORIZONTAL_PUSH",
+  "loadType": "TIME",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "push-up-scapular",
+  "name": "Push up scapular",
+  "videoUrl": "https://www.youtube.com/shorts/emB58J1SyXA",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "reverse-nordic",
+  "name": "Reverse nordic",
+  "videoUrl": "https://www.youtube.com/shorts/OGdH1D2aZPU",
+  "pattern": "ISOLATION",
+  "loadType": "EXTERNAL",
+  "block": "variabilidad",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "rotational-band-row",
+  "name": "Rotational band row",
+  "videoUrl": "https://www.youtube.com/shorts/GdRULSXCWdk",
+  "pattern": "HORIZONTAL_PULL",
+  "loadType": "BAND",
+  "block": "calentamiento",
+  "equipment": [
+   "banda"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "salto-cajon",
+  "name": "Salto al cajón",
+  "videoUrl": "https://www.youtube.com/shorts/8LstYuM2UoM",
+  "pattern": "PLYOMETRIC",
+  "loadType": "CONTACTS",
+  "block": "pliometria",
+  "equipment": [
+   "cajón"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "scorpion",
+  "name": "Scorpion",
+  "videoUrl": "https://www.youtube.com/watch?v=q9Sllm2jEss",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "copenhagen-corto",
+  "name": "Copenhagen corto",
+  "videoUrl": "https://www.youtube.com/shorts/Rwap0_j5i5A",
+  "pattern": "CORE",
+  "loadType": "TIME",
+  "block": "secundario",
+  "equipment": [],
+  "unilateral": true
+ },
+ {
+  "id": "shoulder-external-rotation-band",
+  "name": "Rotación externa de hombro con banda",
+  "videoUrl": "https://www.youtube.com/shorts/7DqYesMRkzU",
+  "pattern": "ISOLATION",
+  "loadType": "BAND",
+  "block": "calentamiento",
+  "equipment": [
+   "banda"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "side-plank-rotation",
+  "name": "Side plank rotation",
+  "videoUrl": "https://www.youtube.com/watch?v=OMc5f_JUDUU",
+  "pattern": "CORE",
+  "loadType": "BODYWEIGHT",
+  "block": "secundario",
+  "equipment": [],
+  "unilateral": true
+ },
+ {
+  "id": "side-plank-up-down",
+  "name": "Side plank up/down",
+  "videoUrl": "https://www.youtube.com/shorts/BZVVaHwyksA",
+  "pattern": "CORE",
+  "loadType": "BODYWEIGHT",
+  "block": "primario",
+  "equipment": [],
+  "unilateral": true
+ },
+ {
+  "id": "single-arm-kb-row-bench",
+  "name": "KB row a un brazo en banco",
+  "videoUrl": "https://www.youtube.com/shorts/JEC5QU-_t1Q",
+  "pattern": "HORIZONTAL_PULL",
+  "loadType": "EXTERNAL",
+  "block": "secundario",
+  "equipment": [
+   "kettlebell"
+  ],
+  "unilateral": true
+ },
+ {
+  "id": "single-leg-2-contact-jump",
+  "name": "Single leg 2 contact + jump",
+  "videoUrl": "https://www.youtube.com/shorts/B5qMUdwgCQU",
+  "pattern": "PLYOMETRIC",
+  "loadType": "CONTACTS",
+  "block": "pliometria",
+  "equipment": [],
+  "unilateral": true
+ },
+ {
+  "id": "sprint",
+  "name": "Sprint a máxima velocidad",
+  "videoUrl": "https://www.youtube.com/shorts/RY6erbnA1Tw",
+  "pattern": "LOCOMOTION",
+  "loadType": "BODYWEIGHT",
+  "block": "velocidad",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "star-plank",
+  "name": "Star plank",
+  "videoUrl": "https://www.youtube.com/shorts/_aG33nGLe9Q",
+  "pattern": "CORE",
+  "loadType": "TIME",
+  "block": "calentamiento",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "swimming-shoulder-cars",
+  "name": "Swimming shoulder CARs",
+  "videoUrl": "https://www.youtube.com/shorts/7sJuqND3FMM",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "primario",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "tall-kneeling-push-press",
+  "name": "Tall kneeling push press",
+  "videoUrl": "https://www.youtube.com/watch?v=TmJ5OvnOcA8",
+  "pattern": "VERTICAL_PUSH",
+  "loadType": "EXTERNAL",
+  "block": "potencia",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "thread-the-needle",
+  "name": "Thread the needle",
+  "videoUrl": "https://www.youtube.com/shorts/h6_v-dZGLjY",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "primario",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "triceps-polea",
+  "name": "Tríceps polea",
+  "videoUrl": "https://www.youtube.com/shorts/sU9snn0qTEs",
+  "pattern": "ISOLATION",
+  "loadType": "EXTERNAL",
+  "block": "primario",
+  "equipment": [
+   "polea"
+  ],
+  "unilateral": false
+ },
+ {
+  "id": "wall-assisted-shoulder-flexion",
+  "name": "Wall assisted shoulder flexion",
+  "videoUrl": "https://www.youtube.com/shorts/L25hJI05LFE",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "wall-drill-iso-hold",
+  "name": "Wall drill ISO hold",
+  "videoUrl": "https://www.youtube.com/shorts/O0CR5qLAGt4",
+  "pattern": "LOCOMOTION",
+  "loadType": "TIME",
+  "block": "pliometria",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "wall-thoracic-rotation",
+  "name": "Wall thoracic rotation",
+  "videoUrl": "https://www.youtube.com/shorts/l4HMbSkrpyc",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": false
+ },
+ {
+  "id": "wgs",
+  "name": "World's greatest stretch (WGS)",
+  "videoUrl": "https://youtube.com/shorts/FsMmHKLSJ3I?si=Re7BJ8tPfjI_cIm2",
+  "pattern": "MOBILITY",
+  "loadType": "BODYWEIGHT",
+  "block": "construccion",
+  "equipment": [],
+  "unilateral": false
+ }
+]

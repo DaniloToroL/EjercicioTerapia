@@ -37,16 +37,16 @@ export async function createExercise(input: ExerciseInput): Promise<ActionResult
   return { ok: true, data: { id: ex.id } };
 }
 
-async function editableExercise(id: string, orgId: string) {
-  // Los ejercicios globales (orgId null) también se pueden editar: son la biblioteca base de la instalación.
-  return prisma.exercise.findFirst({ where: { id, OR: [{ orgId }, { orgId: null }] } });
+async function editableExercise(id: string, user: { orgId: string; isSuperadmin: boolean }) {
+  // La biblioteca global (orgId null) es compartida por todos los centros: solo la edita el superadmin.
+  return prisma.exercise.findFirst({ where: { id, OR: [{ orgId: user.orgId }, ...(user.isSuperadmin ? [{ orgId: null }] : [])] } });
 }
 
 export async function updateExercise(id: string, input: ExerciseInput): Promise<ActionResult> {
   const coach = await requireCoach();
   const parsed = exerciseSchema.safeParse(input);
   if (!parsed.success) return { ok: false, error: parsed.error.issues[0].message };
-  if (!(await editableExercise(id, coach.orgId))) return { ok: false, error: "Ejercicio no encontrado" };
+  if (!(await editableExercise(id, coach))) return { ok: false, error: "Ejercicio no encontrado" };
   await prisma.exercise.update({ where: { id }, data: normalize(parsed.data) });
   revalidatePath("/coach/biblioteca");
   return { ok: true };
@@ -54,7 +54,7 @@ export async function updateExercise(id: string, input: ExerciseInput): Promise<
 
 export async function setExerciseVideo(id: string, videoUrl: string | null, provider?: VideoProvider): Promise<ActionResult> {
   const coach = await requireCoach();
-  if (!(await editableExercise(id, coach.orgId))) return { ok: false, error: "Ejercicio no encontrado" };
+  if (!(await editableExercise(id, coach))) return { ok: false, error: "Ejercicio no encontrado" };
   await prisma.exercise.update({
     where: { id },
     data: { videoUrl, videoProvider: videoUrl ? (provider ?? detectVideoProvider(videoUrl)) : "NONE" },
@@ -65,7 +65,7 @@ export async function setExerciseVideo(id: string, videoUrl: string | null, prov
 
 export async function archiveExercise(id: string, archived: boolean): Promise<ActionResult> {
   const coach = await requireCoach();
-  if (!(await editableExercise(id, coach.orgId))) return { ok: false, error: "Ejercicio no encontrado" };
+  if (!(await editableExercise(id, coach))) return { ok: false, error: "Ejercicio no encontrado" };
   await prisma.exercise.update({ where: { id }, data: { archived } });
   revalidatePath("/coach/biblioteca");
   return { ok: true };

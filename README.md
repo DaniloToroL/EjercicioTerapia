@@ -4,6 +4,8 @@ Plataforma para planificar entrenamiento por mesociclos y microciclos y hacer se
 
 Cada atleta tiene un link personal (`/r/<token>`) para copiar y pegar. El entrenador decide en la ficha del atleta si el link es con login (crea su contraseña la primera vez y después ingresa con ella) o abierto (entra directo, sin contraseña ni email). Generar un link nuevo invalida el anterior y cierra las sesiones abiertas con él.
 
+El superadmin (definido con `SUPERADMIN_EMAIL` en el `.env`) administra toda la plataforma desde `/admin`: crea centros con su dueño, agrega entrenadores, suspende centros y puede entrar a cualquiera con permisos de dueño. La biblioteca global (ejercicios de la planilla con sus 147 videos y el catálogo base) solo la edita el superadmin; cada centro edita sus propios ejercicios.
+
 Plan de producto y decisiones: [docs/plan-producto.md](docs/plan-producto.md). Despliegue en el VPS: [docs/despliegue.md](docs/despliegue.md).
 
 ## Stack

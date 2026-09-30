@@ -58,6 +58,7 @@ export default async function LibraryPage({ searchParams }: PageProps<"/coach/bi
         videoUrl: true,
         source: true,
         archived: true,
+        orgId: true,
       },
     }),
     prisma.exercise.count({ where }),
@@ -76,9 +77,16 @@ export default async function LibraryPage({ searchParams }: PageProps<"/coach/bi
     <div className="space-y-6 p-4 md:p-8">
       <PageHeader
         title="Biblioteca de ejercicios"
-        description={`${own} ejercicios propios y ${dataset} del catálogo base. Toca un ejercicio para editarlo o asignarle video.`}
+        description={`${own} ejercicios de la planilla y propios, y ${dataset} del catálogo base. Toca un ejercicio para ver su video${coach.isSuperadmin ? " o editarlo" : ""}.`}
       />
-      <LibraryTable exercises={exercises} total={total} page={page} pageSize={PAGE_SIZE} blockTypes={blockTypes} />
+      <LibraryTable
+        exercises={exercises.map(({ orgId, ...e }) => ({ ...e, isGlobal: orgId === null }))}
+        total={total}
+        page={page}
+        pageSize={PAGE_SIZE}
+        blockTypes={blockTypes}
+        canEditGlobal={coach.isSuperadmin}
+      />
     </div>
   );
 }

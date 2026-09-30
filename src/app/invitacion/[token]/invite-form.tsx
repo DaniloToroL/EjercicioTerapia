@@ -32,7 +32,7 @@ export function InviteForm({ token }: { token: string }) {
     await signIn("credentials", { email: res.data.email, password, redirect: false });
     // Recarga completa para que el servidor lea la cookie de sesión nueva y redirija según el rol.
     // eslint-disable-next-line @next/next/no-location-assign-relative-destination
-    window.location.assign("/atleta");
+    window.location.assign("/");
   }
 
   return (
