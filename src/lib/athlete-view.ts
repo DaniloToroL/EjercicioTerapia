@@ -43,7 +43,7 @@ export async function getSessionView(sessionId: string, athleteId: string, orgId
   const [workout, checkin, thresholds] = await Promise.all([
     prisma.workoutLog.findUnique({
       where: { sessionId_athleteId: { sessionId, athleteId } },
-      include: { sets: true },
+      include: { sets: true, exerciseLogs: true },
     }),
     prisma.wellnessCheckin.findUnique({ where: { athleteId_sessionId: { athleteId, sessionId } } }),
     getWellnessThresholds(orgId),
@@ -65,19 +65,31 @@ export async function getSessionView(sessionId: string, athleteId: string, orgId
       seconds: true,
       rpe: true,
       setNumber: true,
+      prescriptionId: true,
       workout: { select: { id: true, date: true } },
       prescription: { select: { exerciseId: true } },
     },
   });
+  // El RPE se registra por ejercicio; las series antiguas pueden traerlo por serie.
+  const exerciseRpes = await prisma.exerciseLog.findMany({
+    where: { rpe: { not: null }, workout: { athleteId, NOT: { sessionId } }, prescription: { exerciseId: { in: exerciseIds } } },
+    select: { workoutLogId: true, prescriptionId: true, rpe: true },
+  });
+  const rpeByExercise = new Map(exerciseRpes.map((e) => [`${e.workoutLogId}:${e.prescriptionId}`, e.rpe]));
 
-  const lastByExercise: Record<string, { date: string; sets: { reps: number | null; loadKg: number | null; seconds: number | null; rpe: number | null }[] }> = {};
+  const lastByExercise: Record<string, { date: string; sets: { reps: number | null; loadKg: number | null; seconds: number | null }[]; rpe: number | null }> = {};
   const best1RM: Record<string, number> = {};
   for (const h of history) {
     const exId = h.prescription.exerciseId;
     const d = toISODate(h.workout.date);
-    if (!lastByExercise[exId]) lastByExercise[exId] = { date: d, sets: [] };
-    if (lastByExercise[exId].date === d) lastByExercise[exId].sets.push({ reps: h.reps, loadKg: h.loadKg, seconds: h.seconds, rpe: h.rpe });
-    const e = estimate1RM(h.loadKg, h.reps, h.rpe);
+    const rpe = h.rpe ?? rpeByExercise.get(`${h.workout.id}:${h.prescriptionId}`) ?? null;
+    if (!lastByExercise[exId]) lastByExercise[exId] = { date: d, sets: [], rpe: null };
+    const last = lastByExercise[exId];
+    if (last.date === d) {
+      last.sets.push({ reps: h.reps, loadKg: h.loadKg, seconds: h.seconds });
+      if (rpe != null && (last.rpe == null || rpe > last.rpe)) last.rpe = rpe;
+    }
+    const e = estimate1RM(h.loadKg, h.reps, rpe);
     if (e && e > (best1RM[exId] ?? 0)) best1RM[exId] = e;
   }
 
@@ -107,9 +119,16 @@ export async function getSessionView(sessionId: string, athleteId: string, orgId
             reps: s.reps,
             loadKg: s.loadKg,
             seconds: s.seconds,
-            rpe: s.rpe,
             done: s.done,
           })),
+          // RPE por ejercicio; si solo hay RPE antiguo por serie, se usa el más alto.
+          exerciseRpe: Object.fromEntries(
+            [...new Set(workout.sets.map((s) => s.prescriptionId).concat(workout.exerciseLogs.map((e) => e.prescriptionId)))].map((id) => {
+              const logged = workout.exerciseLogs.find((e) => e.prescriptionId === id);
+              const legacy = workout.sets.filter((s) => s.prescriptionId === id && s.rpe != null).map((s) => s.rpe!);
+              return [id, logged ? logged.rpe : legacy.length ? Math.max(...legacy) : null];
+            }),
+          ) as Record<string, number | null>,
         }
       : null,
     checkin: checkin

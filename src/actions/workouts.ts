@@ -63,11 +63,21 @@ const setSchema = z.object({
   reps: z.number().int().min(0).max(1000).nullable(),
   loadKg: z.number().min(0).max(1000).nullable(),
   seconds: z.number().int().min(0).max(36000).nullable(),
-  rpe: z.number().min(1).max(10).nullable(),
+  // Obsoleto: el RPE ahora es por ejercicio (logExerciseRpe). Se acepta para series que quedaron en cola offline.
+  rpe: z.number().min(1).max(10).nullable().optional(),
   done: z.boolean(),
 });
 
 export type SetInput = z.input<typeof setSchema>;
+
+/** Prescripción válida dentro de una sesión del atleta; devuelve el registro de la sesión (lo crea si falta). */
+async function workoutFor(userId: string, sessionId: string, prescriptionId: string) {
+  const s = await athleteSession(sessionId, userId);
+  if (!s) return { error: "Sesión no encontrada" } as const;
+  const prescription = await prisma.prescription.findFirst({ where: { id: prescriptionId, block: { sessionId } }, select: { id: true } });
+  if (!prescription) return { error: "Ejercicio no encontrado" } as const;
+  return { workout: await ensureWorkout(sessionId, userId, todayISO()) } as const;
+}
 
 /** Guarda una serie. Es idempotente (upsert por serie), así la cola offline puede reintentar sin duplicar. */
 export async function logSet(input: SetInput): Promise<ActionResult> {
@@ -75,16 +85,37 @@ export async function logSet(input: SetInput): Promise<ActionResult> {
   const parsed = setSchema.safeParse(input);
   if (!parsed.success) return { ok: false, error: "Datos de la serie inválidos" };
   const d = parsed.data;
-  const s = await athleteSession(d.sessionId, user.id);
-  if (!s) return { ok: false, error: "Sesión no encontrada" };
-  const prescription = await prisma.prescription.findFirst({ where: { id: d.prescriptionId, block: { sessionId: d.sessionId } }, select: { id: true } });
-  if (!prescription) return { ok: false, error: "Ejercicio no encontrado" };
-  const workout = await ensureWorkout(d.sessionId, user.id, todayISO());
-  const values = { reps: d.reps, loadKg: d.loadKg, seconds: d.seconds, rpe: d.rpe, done: d.done };
+  const found = await workoutFor(user.id, d.sessionId, d.prescriptionId);
+  if (found.error !== undefined) return { ok: false, error: found.error };
+  const values = { reps: d.reps, loadKg: d.loadKg, seconds: d.seconds, done: d.done, ...(d.rpe !== undefined ? { rpe: d.rpe } : {}) };
   await prisma.setLog.upsert({
-    where: { workoutLogId_prescriptionId_setNumber: { workoutLogId: workout.id, prescriptionId: d.prescriptionId, setNumber: d.setNumber } },
-    create: { workoutLogId: workout.id, prescriptionId: d.prescriptionId, setNumber: d.setNumber, ...values },
+    where: { workoutLogId_prescriptionId_setNumber: { workoutLogId: found.workout.id, prescriptionId: d.prescriptionId, setNumber: d.setNumber } },
+    create: { workoutLogId: found.workout.id, prescriptionId: d.prescriptionId, setNumber: d.setNumber, ...values },
     update: values,
+  });
+  return { ok: true };
+}
+
+const exerciseRpeSchema = z.object({
+  sessionId: z.string().min(1),
+  prescriptionId: z.string().min(1),
+  rpe: z.number().min(1).max(10).nullable(),
+});
+
+export type ExerciseRpeInput = z.input<typeof exerciseRpeSchema>;
+
+/** RPE del ejercicio completo (una vez por ejercicio). Idempotente, igual que logSet. */
+export async function logExerciseRpe(input: ExerciseRpeInput): Promise<ActionResult> {
+  const user = await requireUser();
+  const parsed = exerciseRpeSchema.safeParse(input);
+  if (!parsed.success) return { ok: false, error: "RPE inválido" };
+  const d = parsed.data;
+  const found = await workoutFor(user.id, d.sessionId, d.prescriptionId);
+  if (found.error !== undefined) return { ok: false, error: found.error };
+  await prisma.exerciseLog.upsert({
+    where: { workoutLogId_prescriptionId: { workoutLogId: found.workout.id, prescriptionId: d.prescriptionId } },
+    create: { workoutLogId: found.workout.id, prescriptionId: d.prescriptionId, rpe: d.rpe },
+    update: { rpe: d.rpe },
   });
   return { ok: true };
 }

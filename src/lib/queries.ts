@@ -127,6 +127,7 @@ export async function getAthletesOverview(orgId: string, coachId: string) {
           completedAt: true,
           sessionRpe: true,
           sets: { select: { rpe: true, prescription: { select: { rpeTarget: true } } } },
+          exerciseLogs: { select: { rpe: true, prescription: { select: { rpeTarget: true } } } },
         },
       },
     },
@@ -141,7 +142,9 @@ export async function getAthletesOverview(orgId: string, coachId: string) {
     const wellness = lastCheckin ? { ...evaluateWellness(lastCheckin.total, thresholds), total: lastCheckin.total, date: toISODate(lastCheckin.date) } : null;
     const lastWorkout = a.workouts.find((w) => w.completedAt);
     const recent = a.workouts.filter((w) => toISODate(w.date) >= addDaysISO(today, -7));
-    const rpeOver = recent.some((w) => w.sets.some((s) => s.rpe != null && s.prescription.rpeTarget != null && s.rpe >= s.prescription.rpeTarget + 1.5));
+    const over = (r: { rpe: number | null; prescription: { rpeTarget: number | null } }) =>
+      r.rpe != null && r.prescription.rpeTarget != null && r.rpe >= r.prescription.rpeTarget + 1.5;
+    const rpeOver = recent.some((w) => w.exerciseLogs.some(over) || w.sets.some(over));
     const nextSession = schedule.find((s) => s.date && s.date >= today);
     const alerts: string[] = [];
     if (wellness && (wellness.level === "warning" || wellness.level === "bad") && wellness.date >= addDaysISO(today, -3)) alerts.push("Regeneración baja");
@@ -177,6 +180,7 @@ export async function getProgress(athleteId: string, orgId: string) {
     orderBy: { date: "asc" },
     include: {
       session: { select: { name: true } },
+      exerciseLogs: { select: { prescriptionId: true, rpe: true } },
       sets: {
         where: { done: true },
         include: {
@@ -212,6 +216,7 @@ export async function getProgress(athleteId: string, orgId: string) {
     if (w.completedAt) wk.sessions++;
     wk.load += sessionLoad(w.sessionRpe, w.durationMin) ?? 0;
     const blocks = byWeekBlock.get(week) ?? new Map<string, number>();
+    const exerciseRpe = new Map(w.exerciseLogs.map((e) => [e.prescriptionId, e.rpe]));
     for (const s of w.sets) {
       const ex = s.prescription.exercise;
       const vol = setVolume(ex.loadType, s);
@@ -223,7 +228,8 @@ export async function getProgress(athleteId: string, orgId: string) {
 
       const agg = byExercise.get(ex.id) ?? { id: ex.id, name: ex.name, loadType: ex.loadType, points: new Map() };
       const p = agg.points.get(date) ?? { date, e1rm: null, maxKg: 0, tonnage: 0, reps: 0 };
-      const e = estimate1RM(s.loadKg, s.reps, s.rpe);
+      // RPE del ejercicio (o el antiguo por serie). Aplicado a todas sus series, el máximo cae en la serie más exigente.
+      const e = estimate1RM(s.loadKg, s.reps, s.rpe ?? exerciseRpe.get(s.prescriptionId) ?? null);
       if (e != null && (p.e1rm == null || e > p.e1rm)) p.e1rm = e;
       p.maxKg = Math.max(p.maxKg, s.loadKg ?? 0);
       p.tonnage += vol.tonnage;

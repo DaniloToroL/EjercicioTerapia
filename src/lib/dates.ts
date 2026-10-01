@@ -33,6 +33,15 @@ export function formatDateLong(iso: string) {
   return new Intl.DateTimeFormat("es-CL", { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" }).format(fromISODate(iso));
 }
 
+const DAYS_COMPACT = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+const MONTHS_COMPACT = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sept", "oct", "nov", "dic"];
+
+/** "Lun 5 oct": para encabezados de una línea. */
+export function formatDateCompact(iso: string) {
+  const d = fromISODate(iso);
+  return `${DAYS_COMPACT[d.getUTCDay()]} ${d.getUTCDate()} ${MONTHS_COMPACT[d.getUTCMonth()]}`;
+}
+
 export function formatDateShort(iso: string) {
   return new Intl.DateTimeFormat("es-CL", { day: "numeric", month: "short", timeZone: "UTC" }).format(fromISODate(iso));
 }

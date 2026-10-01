@@ -68,12 +68,12 @@ enum VideoProvider {
 }
 
 model Organization {
-  id                String   @id @default(cuid())
-  name              String
+  id                 String   @id @default(cuid())
+  name               String
   // Umbrales del check-in de regeneración: [{ max, label, message, level }]
   wellnessThresholds Json?
-  active            Boolean  @default(true) // el superadmin puede suspender un centro
-  createdAt         DateTime @default(now())
+  active             Boolean  @default(true) // el superadmin puede suspender un centro
+  createdAt          DateTime @default(now())
 
   users      User[]
   exercises  Exercise[]
@@ -82,34 +82,34 @@ model Organization {
 }
 
 model User {
-  id             String    @id @default(cuid())
-  orgId          String
-  role           Role
-  name           String
-  email          String?   @unique // opcional para atletas con link abierto
-  passwordHash   String?
-  accessToken    String?   @unique // link permanente del atleta: /r/<token>
-  accessMode     AccessMode @default(LOGIN)
-  bodyWeightKg   Float?
-  birthDate      DateTime? @db.Date
-  notes          String?
-  active         Boolean   @default(true)
+  id            String     @id @default(cuid())
+  orgId         String
+  role          Role
+  name          String
+  email         String?    @unique // opcional para atletas con link abierto
+  passwordHash  String?
+  accessToken   String?    @unique // link permanente del atleta: /r/<token>
+  accessMode    AccessMode @default(LOGIN)
+  bodyWeightKg  Float?
+  birthDate     DateTime?  @db.Date
+  notes         String?
+  active        Boolean    @default(true)
   // Administra toda la plataforma: todos los centros y la biblioteca global. Se suma a su rol en su centro.
-  isSuperadmin   Boolean   @default(false)
-  inviteToken    String?   @unique
-  inviteExpires  DateTime?
-  consentAt      DateTime?
-  coachId        String?
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
+  isSuperadmin  Boolean    @default(false)
+  inviteToken   String?    @unique
+  inviteExpires DateTime?
+  consentAt     DateTime?
+  coachId       String?
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
 
-  org       Organization      @relation(fields: [orgId], references: [id], onDelete: Cascade)
-  coach     User?             @relation("CoachAthletes", fields: [coachId], references: [id], onDelete: SetNull)
-  athletes  User[]            @relation("CoachAthletes")
-  coachedPrograms Program[]   @relation("ProgramCoach")
-  programs  Program[]         @relation("ProgramAthlete")
-  workouts  WorkoutLog[]
-  checkins  WellnessCheckin[]
+  org             Organization      @relation(fields: [orgId], references: [id], onDelete: Cascade)
+  coach           User?             @relation("CoachAthletes", fields: [coachId], references: [id], onDelete: SetNull)
+  athletes        User[]            @relation("CoachAthletes")
+  coachedPrograms Program[]         @relation("ProgramCoach")
+  programs        Program[]         @relation("ProgramAthlete")
+  workouts        WorkoutLog[]
+  checkins        WellnessCheckin[]
 
   @@index([orgId, role])
 }
@@ -241,25 +241,26 @@ model SessionBlock {
 }
 
 model Prescription {
-  id          String  @id @default(cuid())
-  blockId     String
-  exerciseId  String
-  order       Int
-  group       String? // superserie: A, B, C...
-  sets        Int     @default(3)
-  repsText    String? // lo que escribe el entrenador: "8 a 10", "30\" x mano"
-  repsMin     Int?
-  repsMax     Int?
-  loadKg      Float?
-  loadPct     Float? // % del 1RM estimado
-  rpeTarget   Float?
-  tempo       String?
-  restSec     Int?
-  notes       String?
+  id         String  @id @default(cuid())
+  blockId    String
+  exerciseId String
+  order      Int
+  group      String? // superserie: A, B, C...
+  sets       Int     @default(3)
+  repsText   String? // lo que escribe el entrenador: "8 a 10", "30\" x mano"
+  repsMin    Int?
+  repsMax    Int?
+  loadKg     Float?
+  loadPct    Float? // % del 1RM estimado
+  rpeTarget  Float?
+  tempo      String?
+  restSec    Int?
+  notes      String?
 
-  block    SessionBlock @relation(fields: [blockId], references: [id], onDelete: Cascade)
-  exercise Exercise     @relation(fields: [exerciseId], references: [id], onDelete: Restrict)
-  setLogs  SetLog[]
+  block        SessionBlock  @relation(fields: [blockId], references: [id], onDelete: Cascade)
+  exercise     Exercise      @relation(fields: [exerciseId], references: [id], onDelete: Restrict)
+  setLogs      SetLog[]
+  exerciseLogs ExerciseLog[]
 
   @@index([blockId, order])
   @@index([exerciseId])
@@ -276,9 +277,10 @@ model WorkoutLog {
   durationMin Int?
   comment     String?
 
-  session TrainingSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
-  athlete User            @relation(fields: [athleteId], references: [id], onDelete: Cascade)
-  sets    SetLog[]
+  session      TrainingSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  athlete      User            @relation(fields: [athleteId], references: [id], onDelete: Cascade)
+  sets         SetLog[]
+  exerciseLogs ExerciseLog[]
 
   @@unique([sessionId, athleteId])
   @@index([athleteId, date])
@@ -300,6 +302,22 @@ model SetLog {
   prescription Prescription @relation(fields: [prescriptionId], references: [id], onDelete: Cascade)
 
   @@unique([workoutLogId, prescriptionId, setNumber])
+  @@index([prescriptionId])
+}
+
+// Registro por ejercicio dentro de una sesión: el RPE se informa una vez por ejercicio, no por serie.
+// (SetLog.rpe queda solo para registros antiguos.)
+model ExerciseLog {
+  id             String   @id @default(cuid())
+  workoutLogId   String
+  prescriptionId String
+  rpe            Float?
+  updatedAt      DateTime @updatedAt
+
+  workout      WorkoutLog   @relation(fields: [workoutLogId], references: [id], onDelete: Cascade)
+  prescription Prescription @relation(fields: [prescriptionId], references: [id], onDelete: Cascade)
+
+  @@unique([workoutLogId, prescriptionId])
   @@index([prescriptionId])
 }
 

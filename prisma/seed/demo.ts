@@ -352,10 +352,15 @@ export async function seedDemo(prisma: PrismaClient) {
             reps: p.exercise.loadType === "TIME" ? null : (p.repsMax ?? 10),
             seconds: p.exercise.loadType === "TIME" ? (p.repsMax ?? 30) : null,
             loadKg: p.loadKg,
-            rpe: p.rpeTarget != null ? Math.min(10, Math.round((p.rpeTarget - 0.5 + random()) * 2) / 2) : null,
             done: true,
           })),
         ),
+      });
+      // El RPE se registra una vez por ejercicio.
+      await prisma.exerciseLog.createMany({
+        data: items
+          .filter((p) => p.rpeTarget != null)
+          .map((p) => ({ workoutLogId: workout.id, prescriptionId: p.id, rpe: Math.min(10, Math.round(p.rpeTarget! - 0.5 + random())) })),
       });
       const v = () => 1 + Math.floor(random() * 4);
       const values = { sleepTime: v(), sleepQuality: v(), rest: v(), pain: v(), stress: v(), nutrition: v() };

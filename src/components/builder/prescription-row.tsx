@@ -135,7 +135,14 @@ export function PrescriptionRow({ item, readOnlyReason }: { item: BuilderPrescri
         <Cell label="Series" inputMode="numeric" value={String(item.sets)} onSave={(v) => save({ sets: Math.max(1, Math.round(numOrNull(v) ?? 1)) })} />
         <Cell label={isTime ? "Tiempo" : "Repeticiones"} inputMode="text" value={item.repsText ?? ""} placeholder={isTime ? "s" : "reps"} onSave={(v) => save({ repsText: v.trim() || null })} />
         {showKg ? (
-          <Cell label="Kg" value={item.loadKg != null ? String(item.loadKg).replace(".", ",") : ""} placeholder="kg" onSave={(v) => save({ loadKg: numOrNull(v) })} />
+          <Cell
+            label="Kg"
+            value={item.loadKg != null ? String(item.loadKg).replace(".", ",") : ""}
+            placeholder="kg"
+            onSave={(v) => save({ loadKg: numOrNull(v) })}
+            // El atleta usa la carga que indica el entrenador: se resalta si falta en un ejercicio con carga externa.
+            className={cn(ex.loadType === "EXTERNAL" && item.loadKg == null && !item.loadPct && "border-amber-400 bg-amber-50 dark:bg-amber-950/30")}
+          />
         ) : (
           <span className="text-center text-xs text-muted-foreground">{ex.loadType === "BAND" ? "banda" : ex.loadType === "CONTACTS" ? "cont." : "-"}</span>
         )}

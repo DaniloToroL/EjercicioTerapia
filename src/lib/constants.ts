@@ -57,13 +57,13 @@ export const DEFAULT_BLOCK_TYPES = [
 export const DEFAULT_SESSION_BLOCKS = ["construccion", "calentamiento", "pliometria", "primario", "secundario", "variabilidad"];
 
 /** Colores de sesión, equivalentes a los encabezados de la planilla. */
-export const SESSION_COLORS: Record<string, { label: string; header: string; soft: string; text: string }> = {
-  blue: { label: "Azul", header: "bg-blue-800 text-white", soft: "bg-blue-50 dark:bg-blue-950/40", text: "text-blue-800 dark:text-blue-300" },
-  green: { label: "Verde", header: "bg-green-800 text-white", soft: "bg-green-50 dark:bg-green-950/40", text: "text-green-800 dark:text-green-300" },
-  red: { label: "Rojo", header: "bg-red-700 text-white", soft: "bg-red-50 dark:bg-red-950/40", text: "text-red-700 dark:text-red-300" },
-  black: { label: "Negro y amarillo", header: "bg-neutral-900 text-amber-400", soft: "bg-amber-50 dark:bg-amber-950/30", text: "text-amber-700 dark:text-amber-400" },
-  violet: { label: "Violeta", header: "bg-violet-800 text-white", soft: "bg-violet-50 dark:bg-violet-950/40", text: "text-violet-800 dark:text-violet-300" },
-  slate: { label: "Gris", header: "bg-slate-700 text-white", soft: "bg-slate-50 dark:bg-slate-900/40", text: "text-slate-700 dark:text-slate-300" },
+export const SESSION_COLORS: Record<string, { label: string; header: string; soft: string; text: string; dot: string }> = {
+  blue: { label: "Azul", header: "bg-blue-800 text-white", soft: "bg-blue-50 dark:bg-blue-950/40", text: "text-blue-800 dark:text-blue-300", dot: "bg-blue-600" },
+  green: { label: "Verde", header: "bg-green-800 text-white", soft: "bg-green-50 dark:bg-green-950/40", text: "text-green-800 dark:text-green-300", dot: "bg-green-600" },
+  red: { label: "Rojo", header: "bg-red-700 text-white", soft: "bg-red-50 dark:bg-red-950/40", text: "text-red-700 dark:text-red-300", dot: "bg-red-600" },
+  black: { label: "Negro y amarillo", header: "bg-neutral-900 text-amber-400", soft: "bg-amber-50 dark:bg-amber-950/30", text: "text-amber-700 dark:text-amber-400", dot: "bg-amber-400" },
+  violet: { label: "Violeta", header: "bg-violet-800 text-white", soft: "bg-violet-50 dark:bg-violet-950/40", text: "text-violet-800 dark:text-violet-300", dot: "bg-violet-600" },
+  slate: { label: "Gris", header: "bg-slate-700 text-white", soft: "bg-slate-50 dark:bg-slate-900/40", text: "text-slate-700 dark:text-slate-300", dot: "bg-slate-500" },
 };
 export const SESSION_COLOR_ORDER = ["blue", "green", "red", "black", "violet", "slate"];
 
@@ -92,6 +92,13 @@ export const DEFAULT_WELLNESS_THRESHOLDS: WellnessThreshold[] = [
   { max: 28, level: "warning", message: "Estado regular: considerar bajar volumen o intensidad" },
   { max: 42, level: "bad", message: "Estado deficiente: priorizar la recuperación y avisar al entrenador" },
 ];
+
+export const WELLNESS_LEVEL_LABELS: Record<WellnessLevel, string> = {
+  optimal: "Estado óptimo",
+  good: "Buen estado",
+  warning: "Estado regular",
+  bad: "Estado deficiente",
+};
 
 export const WELLNESS_LEVEL_STYLES: Record<WellnessLevel, string> = {
   optimal: "bg-emerald-100 text-emerald-900 dark:bg-emerald-900/40 dark:text-emerald-200",

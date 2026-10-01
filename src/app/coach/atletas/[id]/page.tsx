@@ -58,11 +58,21 @@ export default async function AthletePage({ params }: PageProps<"/coach/atletas/
       take: 15,
       include: {
         session: { select: { name: true } },
+        exerciseLogs: { select: { prescriptionId: true, rpe: true } },
         sets: {
           orderBy: [{ prescription: { block: { order: "asc" } } }, { prescription: { order: "asc" } }, { setNumber: "asc" }],
           include: {
             prescription: {
-              select: { id: true, repsText: true, loadKg: true, rpeTarget: true, sets: true, exercise: { select: { name: true, loadType: true } } },
+              select: {
+                id: true,
+                repsText: true,
+                repsMin: true,
+                repsMax: true,
+                loadKg: true,
+                rpeTarget: true,
+                sets: true,
+                exercise: { select: { name: true, loadType: true } },
+              },
             },
           },
         },
@@ -143,13 +153,19 @@ export default async function AthletePage({ params }: PageProps<"/coach/atletas/
                           <TableRow>
                             <TableHead>Ejercicio</TableHead>
                             <TableHead>Planificado</TableHead>
-                            <TableHead>Realizado (reps x kg, RPE)</TableHead>
+                            <TableHead>Realizado</TableHead>
                           </TableRow>
                         </TableHeader>
                         <TableBody>
                           {[...byRx.values()].map((sets) => {
                             const p = sets[0].prescription;
-                            const over = sets.some((s) => s.rpe != null && p.rpeTarget != null && s.rpe >= p.rpeTarget + 1.5);
+                            const legacy = sets.filter((s) => s.rpe != null).map((s) => s.rpe!);
+                            const rpe = w.exerciseLogs.find((e) => e.prescriptionId === p.id)?.rpe ?? (legacy.length ? Math.max(...legacy) : null);
+                            const over = rpe != null && p.rpeTarget != null && rpe >= p.rpeTarget + 1.5;
+                            const isTime = p.exercise.loadType === "TIME";
+                            // Más o menos que lo planificado: verde si hizo más, ámbar si hizo menos.
+                            const tone = (value: number | null, low: number | null, high: number | null) =>
+                              value == null || low == null ? "" : value < low ? "text-amber-700 dark:text-amber-400" : high != null && value > high ? "text-emerald-700 dark:text-emerald-400" : "";
                             return (
                               <TableRow key={p.id}>
                                 <TableCell className="font-medium">{p.exercise.name}</TableCell>
@@ -158,17 +174,18 @@ export default async function AthletePage({ params }: PageProps<"/coach/atletas/
                                   {p.loadKg != null && ` x ${formatNumber(p.loadKg, 1)} kg`}
                                   {p.rpeTarget != null && `, RPE ${formatNumber(p.rpeTarget, 1)}`}
                                 </TableCell>
-                                <TableCell className={cn("text-sm tabular-nums", over && "text-amber-700 dark:text-amber-400")}>
+                                <TableCell className="text-sm tabular-nums">
+                                  {sets.filter((s) => s.done).length === 0 && <span className="text-muted-foreground">Sin series</span>}
                                   {sets
                                     .filter((s) => s.done)
-                                    .map((s) =>
-                                      [
-                                        p.exercise.loadType === "TIME" ? `${s.seconds ?? 0}s` : `${s.reps ?? 0}`,
-                                        s.loadKg != null ? `x${formatNumber(s.loadKg, 1)}` : "",
-                                        s.rpe != null ? ` @${formatNumber(s.rpe, 1)}` : "",
-                                      ].join(""),
-                                    )
-                                    .join(", ") || "Sin series"}
+                                    .map((s, i) => (
+                                      <span key={s.id}>
+                                        {i > 0 && ", "}
+                                        <span className={isTime ? "" : tone(s.reps, p.repsMin, p.repsMax)}>{isTime ? `${s.seconds ?? 0}s` : (s.reps ?? 0)}</span>
+                                        {s.loadKg != null && <span className={tone(s.loadKg, p.loadKg, p.loadKg)}>x{formatNumber(s.loadKg, 1)}</span>}
+                                      </span>
+                                    ))}
+                                  {rpe != null && <span className={cn(over && "font-semibold text-amber-700 dark:text-amber-400")}>, RPE {formatNumber(rpe, 1)}</span>}
                                 </TableCell>
                               </TableRow>
                             );
