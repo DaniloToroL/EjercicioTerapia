@@ -61,7 +61,7 @@ export default async function AthleteToday() {
           ))
         ) : (
           <Card>
-            <CardContent className="py-6 text-sm text-muted-foreground">Hoy es día de descanso.{next && " Tu próxima sesión:"}</CardContent>
+            <CardContent className="text-sm text-muted-foreground">Hoy es día de descanso.{next && " Tu próxima sesión:"}</CardContent>
           </Card>
         )}
         {todays.length === 0 && next && (

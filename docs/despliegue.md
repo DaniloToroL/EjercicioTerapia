@@ -137,3 +137,13 @@ El nombre del volumen depende de la carpeta del proyecto; se confirma con `docke
 ## Instalación de prueba
 
 Para mostrar la plataforma con datos, poner `SEED_DEMO=true` en `.env` antes del primer arranque, con la base vacía. Crea un entrenador y un atleta de prueba con el Microciclo 7 y tres semanas registradas. No usar en la instalación real.
+
+## Cargar una semana de la planilla
+
+Las semanas extraídas de la planilla DANILO quedan en `prisma/data/semana-AAAA-MM-DD.json`. Este comando carga la más reciente como programa de la cuenta indicada (puede ser la propia del entrenador, que la ve en "Mi entrenamiento"):
+
+```bash
+docker compose run --rm migrate npx tsx prisma/seed/semana.ts --email tu-email-de-la-cuenta
+```
+
+Los días que ya se hicieron en la planilla quedan registrados (series, RPE, regeneración y comentario) y los pendientes quedan planificados, con el RPE de la planilla como objetivo. Correrlo de nuevo no duplica nada; con `--reemplazar` borra esa carga y la vuelve a crear, incluidos los registros hechos en la app sobre ella. Para otra semana: `--archivo prisma/data/semana-AAAA-MM-DD.json`.

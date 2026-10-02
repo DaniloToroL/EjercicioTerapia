@@ -1,0 +1,746 @@
+{
+ "source": "Planilla DANILO, pestaña SEPT, filas 249 a 310",
+ "weekStart": "2026-09-28",
+ "mesocycle": "Capacidad estructural",
+ "microcycle": "Sobrecarga estructural",
+ "sessions": [
+  {
+   "name": "Squat / Row",
+   "date": "2026-09-29",
+   "dateShifted": false,
+   "color": "blue",
+   "done": true,
+   "checkin": {
+    "sleepTime": 4,
+    "sleepQuality": 3,
+    "rest": 4,
+    "pain": 1,
+    "stress": 1,
+    "nutrition": 1
+   },
+   "sessionRpe": null,
+   "comment": null,
+   "blocks": [
+    {
+     "key": "construccion",
+     "items": [
+      {
+       "exercise": "rock-back-hip-mob",
+       "label": "ROCK BACK HIP MOB (RODILLA SEPARADA",
+       "sets": 1,
+       "reps": "10",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "half-kneeling-tspine-kb",
+       "label": "HALF KNEELING T-SPINE ROTATION KB",
+       "sets": 1,
+       "reps": "14",
+       "kg": 16,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "tall-kneeling-kb-halo",
+       "label": "TALL KNEELING KB HALO",
+       "sets": 1,
+       "reps": "14",
+       "kg": 16,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "half-kneeling-cable-chop",
+       "label": "HALF KNEELING CABLE CHOP",
+       "sets": 1,
+       "reps": "14",
+       "kg": 25,
+       "rpe": null,
+       "notes": null
+      }
+     ]
+    },
+    {
+     "key": "calentamiento",
+     "items": [
+      {
+       "exercise": "front-monster-walk",
+       "label": "FRONT MONSTER WALK",
+       "sets": 2,
+       "reps": "80",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "deep-squat-spine-rotation",
+       "label": "DEEP SQUAT SPINE ROTATION",
+       "sets": 2,
+       "reps": "14",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "wall-drill-load-lift",
+       "label": "WALL DRILL LOAD & LIFT",
+       "sets": 2,
+       "reps": "14",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "a-skip",
+       "label": "A-SKIP AVANZANDO 30''",
+       "sets": 2,
+       "reps": "30\"",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      }
+     ]
+    },
+    {
+     "key": "pliometria",
+     "items": [
+      {
+       "exercise": "broad-jump",
+       "label": "BROAD JUMP",
+       "sets": 2,
+       "reps": "6",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "salto-cajon",
+       "label": "SALTO AL CAJÓN (UBICA UNA ALTURA DESAFIANTE)",
+       "sets": 2,
+       "reps": "6",
+       "kg": null,
+       "rpe": null,
+       "notes": "Ubica una altura desafiante"
+      }
+     ]
+    },
+    {
+     "key": "primario",
+     "items": [
+      {
+       "exercise": "bb-squat-pause",
+       "label": "BB SQUAT 3' PAUSA",
+       "sets": 1,
+       "reps": "2",
+       "kg": 110,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "bb-squat-pause",
+       "label": "BB SQUAT 3' PAUSA (BAJA EN 3 TEMPOS - SUBE EN 1)",
+       "sets": 4,
+       "reps": "10",
+       "kg": 90,
+       "rpe": null,
+       "notes": "Baja en 3 tiempos, sube en 1"
+      },
+      {
+       "exercise": "cars-escapular",
+       "label": "CARS SCAPULAR",
+       "sets": 5,
+       "reps": "10",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      }
+     ]
+    },
+    {
+     "key": "secundario",
+     "items": [
+      {
+       "exercise": "bb-hex-deadlift-pause",
+       "label": "BB HEXAGONAL DEAD LIFT (3' PAUSA)",
+       "sets": 1,
+       "reps": "2",
+       "kg": 160,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "bb-hex-deadlift-pause",
+       "label": "BB HEXAGONAL DEAD LIFT (3' PAUSA)",
+       "sets": 4,
+       "reps": "12",
+       "kg": 120,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "copenhagen-corto",
+       "label": "SHORT COPENHAGE 10'' POR LADO",
+       "sets": 5,
+       "reps": "10\"",
+       "kg": null,
+       "rpe": null,
+       "notes": "Por lado, 2 repeticiones"
+      }
+     ]
+    },
+    {
+     "key": "variabilidad",
+     "items": [
+      {
+       "exercise": "leg-extension",
+       "label": "LEG EXTENSION",
+       "sets": 4,
+       "reps": "12",
+       "kg": 50,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "seated-leg-curl",
+       "label": "SEATED LEG CURL",
+       "sets": 4,
+       "reps": "10",
+       "kg": 40,
+       "rpe": null,
+       "notes": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Bench press / RDL",
+   "date": "2026-10-01",
+   "dateShifted": false,
+   "color": "green",
+   "done": true,
+   "checkin": {
+    "sleepTime": 3,
+    "sleepQuality": 3,
+    "rest": 2,
+    "pain": 2,
+    "stress": 4,
+    "nutrition": 2
+   },
+   "sessionRpe": 9.6,
+   "comment": "Hice 13 y 10 en pull ups y en press banca termine con 10 y 8. Press militar hice 6 con 35kg",
+   "blocks": [
+    {
+     "key": "construccion",
+     "items": [
+      {
+       "exercise": "swimming-prone",
+       "label": "SWIMING PRONE 1,25 x mano",
+       "sets": 1,
+       "reps": "10",
+       "kg": 2.5,
+       "rpe": null,
+       "notes": "1,25 kg por mano"
+      },
+      {
+       "exercise": "shoulder-cars-half-kneeling",
+       "label": "SHOULDER CARS HALF KNEELING",
+       "sets": 1,
+       "reps": "14",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "single-arm-plank",
+       "label": "SINGLE ARM PLANK 30\" x mano",
+       "sets": 2,
+       "reps": "30\"",
+       "kg": null,
+       "rpe": null,
+       "notes": "Por mano"
+      }
+     ]
+    },
+    {
+     "key": "calentamiento",
+     "items": [
+      {
+       "exercise": "push-up-tempo",
+       "label": "PUSH UP TEMPO 3\" BAJADA 2\" ABAJO 1 SUBIDA",
+       "sets": 1,
+       "reps": "8",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "shoulder-act-band",
+       "label": "SHOULDER ACT BAND",
+       "sets": 1,
+       "reps": "15",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "bb-bench-press-pause",
+       "label": "BB BENCH PRES (3' DE PAUSA)",
+       "sets": 1,
+       "reps": "3",
+       "kg": 70,
+       "rpe": null,
+       "notes": null
+      }
+     ]
+    },
+    {
+     "key": "potencia",
+     "items": [
+      {
+       "exercise": "bb-bench-press-pause",
+       "label": "BB BENCH PRES (3' DE PAUSA)",
+       "sets": 1,
+       "reps": "2",
+       "kg": 85,
+       "rpe": 9,
+       "notes": null
+      }
+     ]
+    },
+    {
+     "key": "primario",
+     "items": [
+      {
+       "exercise": "bb-bench-press-pause",
+       "label": "BB BENCH PRES (3' DE PAUSA)",
+       "sets": 2,
+       "reps": "12",
+       "kg": 70,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "bb-bench-press-pause",
+       "label": "BB BENCH PRES (3' DE PAUSA)",
+       "sets": 1,
+       "reps": "10",
+       "kg": 70,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "bb-bench-press-pause",
+       "label": "BB BENCH PRES (3' DE PAUSA)",
+       "sets": 1,
+       "reps": "8",
+       "kg": 70,
+       "rpe": null,
+       "notes": null
+      }
+     ]
+    },
+    {
+     "key": "secundario",
+     "items": [
+      {
+       "exercise": "pull-up-lastrado",
+       "label": "PULL UP LASTRADO (3' PAUSA)",
+       "sets": 1,
+       "reps": "1",
+       "kg": 20,
+       "rpe": 9,
+       "notes": null
+      },
+      {
+       "exercise": "pull-up",
+       "label": "PULL UP",
+       "sets": 1,
+       "reps": "13",
+       "kg": null,
+       "rpe": 10,
+       "notes": null
+      },
+      {
+       "exercise": "pull-up",
+       "label": "PULL UP",
+       "sets": 3,
+       "reps": "10",
+       "kg": null,
+       "rpe": 10,
+       "notes": null
+      }
+     ]
+    },
+    {
+     "key": "variabilidad",
+     "items": [
+      {
+       "exercise": "bb-overhead-press",
+       "label": "BB OVERHEAD PRES 3' DE PAUSA",
+       "sets": 4,
+       "reps": "6",
+       "kg": 35,
+       "rpe": 10,
+       "notes": "3\" de pausa"
+      },
+      {
+       "exercise": "bent-over-row",
+       "label": "BENT OVER ROW 3' DE PAUSA",
+       "sets": 4,
+       "reps": "8",
+       "kg": 70,
+       "rpe": null,
+       "notes": "3\" de pausa"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "DL / Push",
+   "date": "2026-10-03",
+   "dateShifted": true,
+   "color": "red",
+   "done": false,
+   "checkin": null,
+   "sessionRpe": null,
+   "comment": null,
+   "blocks": [
+    {
+     "key": "construccion",
+     "items": [
+      {
+       "exercise": "deep-squat-hamstring-stretch",
+       "label": "DEEP SQUAT TO HAMSTRING STRETCH",
+       "sets": 1,
+       "reps": "14",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "kb-windmill-half-kneeling",
+       "label": "KB WINDMILL HALF KNEELING",
+       "sets": 1,
+       "reps": "14",
+       "kg": 10,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "march-glute",
+       "label": "MARCH GLUTE",
+       "sets": 1,
+       "reps": "30",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "dns-star-pattern",
+       "label": "DNS STAR PATTERN",
+       "sets": 1,
+       "reps": "14",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      }
+     ]
+    },
+    {
+     "key": "calentamiento",
+     "items": [
+      {
+       "exercise": "front-monster-walk",
+       "label": "FRONT MONSTER WALK",
+       "sets": 2,
+       "reps": "80",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "deep-squat-spine-rotation",
+       "label": "DEEP SQUAT SPINE ROTATION",
+       "sets": 2,
+       "reps": "14",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "wall-drill-load-lift",
+       "label": "WALL DRILL LOAD & LIFT",
+       "sets": 2,
+       "reps": "14",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "a-skip",
+       "label": "A-SKIP AVANZANDO 30''",
+       "sets": 2,
+       "reps": "30\"",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      }
+     ]
+    },
+    {
+     "key": "pliometria",
+     "items": [
+      {
+       "exercise": "cmj-continuo",
+       "label": "CMJ CONTINUO",
+       "sets": 2,
+       "reps": "6",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "salto-cajon",
+       "label": "SALTO AL CAJÓN (UBICA UNA ALTURA DESAFIANTE)",
+       "sets": 2,
+       "reps": "6",
+       "kg": null,
+       "rpe": null,
+       "notes": "Ubica una altura desafiante"
+      }
+     ]
+    },
+    {
+     "key": "primario",
+     "items": [
+      {
+       "exercise": "bb-hex-deadlift-pause",
+       "label": "BB HEXAGONAL DEAD LIFT (3' PAUSA)",
+       "sets": 3,
+       "reps": "1",
+       "kg": 160,
+       "rpe": 9,
+       "notes": null
+      }
+     ]
+    },
+    {
+     "key": "secundario",
+     "items": [
+      {
+       "exercise": "nordic-hamstring-ecc",
+       "label": "CURL NORDIC",
+       "sets": 3,
+       "reps": "8",
+       "kg": null,
+       "rpe": 7,
+       "notes": null
+      },
+      {
+       "exercise": "scorpion-90",
+       "label": "SCORPION 90°",
+       "sets": 3,
+       "reps": "14",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "2db-seated-arnold-press",
+       "label": "2 DB SEATED ARNOLD PRESS",
+       "sets": 3,
+       "reps": "15",
+       "kg": 30,
+       "rpe": 9,
+       "notes": null
+      }
+     ]
+    },
+    {
+     "key": "variabilidad",
+     "items": []
+    }
+   ]
+  },
+  {
+   "name": "Pull / Squat",
+   "date": "2026-10-04",
+   "dateShifted": true,
+   "color": "black",
+   "done": false,
+   "checkin": null,
+   "sessionRpe": null,
+   "comment": null,
+   "blocks": [
+    {
+     "key": "construccion",
+     "items": [
+      {
+       "exercise": "wall-slide",
+       "label": "WALL SLIDE (RANGO CÓMODO, SIN DOLOR)",
+       "sets": 1,
+       "reps": "10",
+       "kg": null,
+       "rpe": null,
+       "notes": "Rango cómodo, sin dolor"
+      },
+      {
+       "exercise": "dorsiflex-kb",
+       "label": "DORSIFLEX CON KB (2 SEGUNDOS ADELANTE)",
+       "sets": 1,
+       "reps": "10",
+       "kg": 20,
+       "rpe": null,
+       "notes": "2 segundos adelante"
+      },
+      {
+       "exercise": "bridge-glute-band",
+       "label": "BRIDGE GLUTE WITH BAND",
+       "sets": 1,
+       "reps": "30",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "side-plank-hip-lift",
+       "label": "SIDE PLANK HIP LIFT",
+       "sets": 1,
+       "reps": "30",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      }
+     ]
+    },
+    {
+     "key": "calentamiento",
+     "items": [
+      {
+       "exercise": "banded-single-leg-airplane",
+       "label": "BANDED SINGLE LEG AIRPLANE",
+       "sets": 1,
+       "reps": "20",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "hanging-scapular-cars",
+       "label": "HANGING SCAPULAR CARS",
+       "sets": 1,
+       "reps": "10",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "pull-up-escapular",
+       "label": "PULL UP SCAPULAR",
+       "sets": 1,
+       "reps": "10",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "pull-up-iso-hold",
+       "label": "PULL UP ISO HOLD 90° 10''",
+       "sets": 1,
+       "reps": "10\"",
+       "kg": null,
+       "rpe": null,
+       "notes": null
+      }
+     ]
+    },
+    {
+     "key": "pliometria",
+     "items": []
+    },
+    {
+     "key": "primario",
+     "items": [
+      {
+       "exercise": "pull-up-lastrado",
+       "label": "PULL UP LASTRADO (3' PAUSA)",
+       "sets": 1,
+       "reps": "1",
+       "kg": 20,
+       "rpe": 8,
+       "notes": null
+      },
+      {
+       "exercise": "pull-up",
+       "label": "PULL UP",
+       "sets": 4,
+       "reps": "12",
+       "kg": null,
+       "rpe": 10,
+       "notes": null
+      }
+     ]
+    },
+    {
+     "key": "secundario",
+     "items": [
+      {
+       "exercise": "bent-over-row",
+       "label": "BENT OVER ROW",
+       "sets": 3,
+       "reps": "8",
+       "kg": 70,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "elevacion-talones",
+       "label": "ELEVACIÓN DE TALONES",
+       "sets": 3,
+       "reps": "12",
+       "kg": 70,
+       "rpe": null,
+       "notes": null
+      },
+      {
+       "exercise": "2db-lunge-walk-squat",
+       "label": "2 DB LUNGE WALK SQUAT",
+       "sets": 3,
+       "reps": "16",
+       "kg": 40,
+       "rpe": null,
+       "notes": null
+      }
+     ]
+    },
+    {
+     "key": "variabilidad",
+     "items": [
+      {
+       "exercise": "2db-curl-biceps",
+       "label": "2 DB CURL BÍCEPS (2 DB DE 15)",
+       "sets": 4,
+       "reps": "12",
+       "kg": 30,
+       "rpe": null,
+       "notes": "2 mancuernas de 15"
+      },
+      {
+       "exercise": "reverse-nordic",
+       "label": "REVERSE NORDIC",
+       "sets": 2,
+       "reps": "12",
+       "kg": 5,
+       "rpe": null,
+       "notes": null
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

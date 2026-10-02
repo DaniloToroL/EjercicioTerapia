@@ -12,7 +12,8 @@
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:seed": "prisma db seed",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "db:semana": "tsx prisma/seed/semana.ts"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
